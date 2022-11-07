@@ -49,7 +49,6 @@ public class BattleManager : MonoBehaviour
     {
         gm = GameManager.Get();
         ui = UIManager.Get();
-        ui.playerWheel.gameObject.SetActive(true);
 
         localEnemies = new List<GameObject>();
         battle.player      =    CharacterRegister.GLOBAL_PLAYER.battle;
@@ -79,6 +78,25 @@ public class BattleManager : MonoBehaviour
         turns = battle.enemies.Length + 2;
 
         gm.SceneChanged();
+
+        SwitchTurn();
+    }
+
+    // Call this whenever the player turn switches
+    private void SwitchTurn()
+    {
+        if (currentTurn == 0) // Player
+        {
+            currentAttacker = localPlayer;
+            
+            ui.playerWheel.gameObject.SetActive(true);
+            currentVictim = localEnemies[selectedEnemy];
+        }
+        else if (currentTurn == 1) // Companion
+        {
+            currentAttacker = localCompanion;
+            currentVictim = localEnemies[selectedEnemy];
+        }
     }
 
     
@@ -89,10 +107,15 @@ public class BattleManager : MonoBehaviour
             selectedEnemy = 0;
             localEnemies.Remove(enemy.gameObject);
             enemy.Kill();
-            if(currentTurn+1 < turns){
-                currentTurn++;
-            } else { currentTurn = 0; }
         }
+
+        if (currentTurn + 1 < turns)
+        {
+            currentTurn++;
+        }
+        else { currentTurn = 0; }
+
+        SwitchTurn();
     }
 
     public void ChangeVictim(bool moveLeft){
@@ -109,16 +132,12 @@ public class BattleManager : MonoBehaviour
                 selectedEnemy--;
             }
         }
+
+        currentVictim = localEnemies[selectedEnemy];
     }
 
     // Update is called once per frame
     void Update(){
-        if(currentTurn == 0){
-            currentAttacker = localPlayer;
-            currentVictim = localEnemies[selectedEnemy]; 
-        } else if(currentTurn == 1){
-            currentAttacker = localCompanion;
-            currentVictim = localEnemies[selectedEnemy];
-        }
+        
     }
 }
