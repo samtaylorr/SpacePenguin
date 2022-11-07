@@ -96,6 +96,9 @@ public class BattleManager : MonoBehaviour
         {
             currentAttacker = localCompanion;
             currentVictim = localEnemies[selectedEnemy];
+
+            // Implement companion wheel - Task 1
+            // Implement companion attack (consider making Player Jump more generic)
         }
     }
 
