@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 6bdb2dd6e053bf74b87f1a0c55c9d621
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Qaz
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 42c0797724e888040bc05bec9e74342c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
