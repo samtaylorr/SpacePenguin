@@ -23,21 +23,6 @@ public class Character {
     public void setMaxHP(float maxHP){ this._maxHP = maxHP; }
 }
 
-public class Action {
-    public GameObject actionModule;
-    public string name;
-
-    public Action(GameObject actionModule, string name){ this.actionModule = actionModule; this.name = name; }
-}
-
-public enum ActionTypes {
-    PLAYER_JUMP,
-    PLAYER_ATTACK,
-    DUO_ATTACK,
-    ITEM,
-    TACTICS
-}
-
 public static class ActionRegister {
     public static Action PLAYER_BASIC_JUMP = new Action(Resources.Load("Prefabs/Battle/Actions/PlayerJump") as GameObject, "Basic Jump");
 

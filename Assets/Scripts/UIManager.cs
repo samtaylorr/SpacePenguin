@@ -42,9 +42,9 @@ public class UIManager : MonoBehaviour
         
     }
 
-    public void EnableActionMenu(ActionTypes type){
+    public void EnableActionMenu(PlayerActions type){
         actionMenu.Reset(playerWheel.GetComponent<WheelManager>());
-        if(type == ActionTypes.PLAYER_JUMP){
+        if(type == PlayerActions.PLAYER_JUMP){
             foreach(Action a in ActionRegister.PLAYER_JUMP){
                 actionMenu.Add(a);
             }

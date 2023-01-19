@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class WheelManager : MonoBehaviour
 {
-    public ActionTypes selectedAction = ActionTypes.PLAYER_JUMP;
+    public PlayerActions selectedAction = PlayerActions.PLAYER_JUMP;
     BattleManager bm;
     Animator anim;
     public bool active;
