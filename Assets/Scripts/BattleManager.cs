@@ -95,6 +95,8 @@ public class BattleManager : MonoBehaviour
         else if (currentTurn == 1) // Companion
         {
             currentAttacker = localCompanion;
+
+            ui.companionWheel.gameObject.SetActive(true);
             currentVictim = localEnemies[selectedEnemy];
 
             // Implement companion wheel - Task 1

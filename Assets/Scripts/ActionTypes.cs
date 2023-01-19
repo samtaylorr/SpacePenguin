@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Action : MonoBehaviour {
     public GameObject actionModule;
-    public string _name;
+    public string name;
 
-    public Action(GameObject actionModule, string _name){ this.actionModule = actionModule; this._name = _name; }
+    public Action(GameObject actionModule, string name){ this.actionModule = actionModule; this.name = name; }
 }
 
 // These actions are handled by an Animator attached to the WheelManager GameObject in scene.

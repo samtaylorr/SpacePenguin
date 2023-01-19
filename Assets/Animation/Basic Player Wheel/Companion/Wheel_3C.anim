@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wheel 2
+  m_Name: Wheel_3C
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -22,7 +22,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 7e-45
+        value: 8e-45
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -39,35 +39,35 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: a40859cfd90d3d84f8b68065d7eaf0eb, type: 3}
+      value: {fileID: 21300000, guid: 510fd04e28dff10458da2eae7b705d65, type: 3}
     attribute: m_Sprite
     path: Current
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: be3d3c71070bbde44b27db2716d60213, type: 3}
+      value: {fileID: 21300000, guid: dba6f70b203001140b4956cc7b256694, type: 3}
     attribute: m_Sprite
     path: Next
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 9385386b1c61a284bb84a07312027b56, type: 3}
+      value: {fileID: 21300000, guid: be3d3c71070bbde44b27db2716d60213, type: 3}
     attribute: m_Sprite
     path: Next_Middle
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: ce6319aeec06f2a49bc920a7b73a9a5d, type: 3}
+      value: {fileID: 21300000, guid: 9385386b1c61a284bb84a07312027b56, type: 3}
     attribute: m_Sprite
     path: Prev_Middle
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 811cabdb711af804294d2bdff489e8ef, type: 3}
+      value: {fileID: 21300000, guid: ce6319aeec06f2a49bc920a7b73a9a5d, type: 3}
     attribute: m_Sprite
     path: Previous
     classID: 114
@@ -128,11 +128,11 @@ AnimationClip:
       isPPtrCurve: 1
       isIntCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: a40859cfd90d3d84f8b68065d7eaf0eb, type: 3}
+    - {fileID: 21300000, guid: 510fd04e28dff10458da2eae7b705d65, type: 3}
+    - {fileID: 21300000, guid: dba6f70b203001140b4956cc7b256694, type: 3}
     - {fileID: 21300000, guid: be3d3c71070bbde44b27db2716d60213, type: 3}
     - {fileID: 21300000, guid: 9385386b1c61a284bb84a07312027b56, type: 3}
     - {fileID: 21300000, guid: ce6319aeec06f2a49bc920a7b73a9a5d, type: 3}
-    - {fileID: 21300000, guid: 811cabdb711af804294d2bdff489e8ef, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -159,7 +159,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 7e-45
+        value: 8e-45
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
