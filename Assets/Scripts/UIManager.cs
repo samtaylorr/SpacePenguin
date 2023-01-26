@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] TMP_Text PenguinHPBar;
     [SerializeField] TMP_Text CompanionHPBar;
-    public Animator playerWheel, companionWheel;
+    public Animator playerWheel, companionWheel, currentWheel;
     [SerializeField] ActionMenu actionMenu;
 
     static public UIManager Get(){
@@ -20,26 +20,31 @@ public class UIManager : MonoBehaviour
     {
         PenguinHPBar.text = CharacterRegister.GLOBAL_PLAYER.HP() + "/" + CharacterRegister.GLOBAL_PLAYER.maxHP();
         CompanionHPBar.text = CharacterRegister.GLOBAL_COMPANION.HP() + "/" + CharacterRegister.GLOBAL_COMPANION.maxHP();
-        
-        bool isActive = playerWheel.gameObject.GetComponent<WheelManager>().active;
+
+        bool isActive = currentWheel.gameObject.GetComponent<WheelManager>().active;
 
         bool horizontal    =    Input.GetButtonDown("Horizontal");
         bool vertical      =    Input.GetButtonDown("Vertical");
 
         if(horizontal && isActive){
             float axis        =       Input.GetAxis("Horizontal");
-            if(axis>0)              { playerWheel.SetTrigger("Next");     }
-            else                    { playerWheel.SetTrigger("Previous");         }
+            if(axis>0)              { playerWheel.SetTrigger("Next");         }
+            else                    { playerWheel.SetTrigger("Previous");     }
             playerWheel.SetTrigger("Switch");
         }
 
         if(vertical && isActive){
             float axis        =       Input.GetAxis("Vertical");
-            if(axis>0)              { playerWheel.SetTrigger("Next");     }
-            else                    { playerWheel.SetTrigger("Previous");         }
+            if(axis>0)              { playerWheel.SetTrigger("Next");         }
+            else                    { playerWheel.SetTrigger("Previous");     }
             playerWheel.SetTrigger("Switch");
         }
-        
+
+    }
+
+    public void ToggleWheelType(bool isPlayer){
+        if(isPlayer){ currentWheel = playerWheel;    }
+        else        { currentWheel = companionWheel; }
     }
 
     public void EnableActionMenu(PlayerActions type){

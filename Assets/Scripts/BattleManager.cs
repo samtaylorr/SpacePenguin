@@ -27,7 +27,7 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField]    Spots           spots;
     [SerializeField]    Battle          battle;
-    
+
     public GameObject          localPlayer, localCompanion;
     public List<GameObject>    localEnemies;
 
@@ -42,7 +42,7 @@ public class BattleManager : MonoBehaviour
 
     public static BattleManager Get(){
         return GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
-    } 
+    }
 
     // Start is called before the first frame update
     void Awake()
@@ -65,7 +65,7 @@ public class BattleManager : MonoBehaviour
                                         spots.companionSpot.transform.position,
                                         spots.companionSpot.transform.rotation
                                     );
-    
+
         for(int i = 0; i < battle.enemies.Length; i++){
             GameObject enemy = Instantiate(
                                             battle.enemies[i],
@@ -88,14 +88,14 @@ public class BattleManager : MonoBehaviour
         if (currentTurn == 0) // Player
         {
             currentAttacker = localPlayer;
-            
+            ui.ToggleWheelType(true);
             ui.playerWheel.gameObject.SetActive(true);
             currentVictim = localEnemies[selectedEnemy];
         }
         else if (currentTurn == 1) // Companion
         {
             currentAttacker = localCompanion;
-
+            ui.ToggleWheelType(false);
             ui.companionWheel.gameObject.SetActive(true);
             currentVictim = localEnemies[selectedEnemy];
 
@@ -104,7 +104,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    
+
 
     public void EndPlayerTurn(Turn turn, Enemy enemy){
         enemy.hp -= turn.damage;
@@ -143,6 +143,6 @@ public class BattleManager : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        
+
     }
 }
