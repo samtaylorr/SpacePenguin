@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Bezier))]
 public class Action_PlayerJump : ActionModule
 {
- 
+
     Vector3[] positions;
     bool arrived = false, pressed = false, combo = false, followPath = true;
     int i = 0;
@@ -17,13 +17,13 @@ public class Action_PlayerJump : ActionModule
     void Start()
     {
         UIprompt.SetMapping(ButtonManager.ButtonMappings.Y_KEY);
-        Vector3 victimPos = new Vector3(victim.transform.position.x + (victim.GetComponent<BoxCollider>().size.x/3), 
+        Vector3 victimPos = new Vector3(victim.transform.position.x + (victim.GetComponent<BoxCollider>().size.x/3),
                                          victim.transform.position.y + victim.GetComponent<BoxCollider>().size.y,
                                                                         victim.transform.position.z);
 
         positions = GetComponent<Bezier>().CalculateCurvePoints(100, attacker.transform.position, victimPos, 25);
         StartCoroutine(Jump());
-        animHandler = attacker.GetComponent<PlayerMovement>().animHandler;
+        animHandler = attacker.GetComponent<MovementAbstract>().animHandler;
         animHandler.SetJump();
     }
 
@@ -37,7 +37,7 @@ public class Action_PlayerJump : ActionModule
         } else {
             yield return null;
         }
-        
+
     }
 
     bool isComboReady(){
@@ -51,7 +51,7 @@ public class Action_PlayerJump : ActionModule
     }
 
     IEnumerator Jump(){
-        while(i < positions.Length){ 
+        while(i < positions.Length){
             yield return new WaitUntil(() => arrived);
             i++;
         }
@@ -61,7 +61,7 @@ public class Action_PlayerJump : ActionModule
         victim.GetComponent<Enemy>().PlayHit();
         yield return new WaitForSeconds(0.05f);
 
-        if(combo){ 
+        if(combo){
             Vector3 secondJump = new Vector3(attacker.transform.position.x, attacker.transform.position.y + 10f, attacker.transform.position.z);
 
             followPath = false;
@@ -102,7 +102,7 @@ public class Action_PlayerJump : ActionModule
             attacker.transform.position = Vector3.MoveTowards(attacker.transform.position, positions[i], Time.deltaTime * 50);
             arrived = hasArrived(attacker.transform.position, positions[i]);
         }
-        
+
         if(isComboReady()){
             StartCoroutine(Timing(UIprompt.transform));
         }

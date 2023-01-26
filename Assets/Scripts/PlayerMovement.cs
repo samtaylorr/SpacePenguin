@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody), typeof(EdgeDetection))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MovementAbstract
 {
 
     [SerializeField] float speed;
     [SerializeField] float jumpForce;
-    public PlayerAnimationHandler animHandler;
     Rigidbody rb;
     EdgeDetection collisions;
     bool isGrounded;
     bool isLeft = false;
     CameraMovement mainCam;
     GameManager gm;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
             animHandler.SetJump();
             isGrounded = false;
         }
-        
+
         CollisionHit result = collisions.DetectCollision();
         if(horizontal <= 0 && result.left){ horizontal = 0; }
         if(horizontal >= 0 && result.right){ horizontal = 0; }

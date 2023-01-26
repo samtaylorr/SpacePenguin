@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Action : MonoBehaviour {
+public class Action {
     public GameObject actionModule;
     public string name;
 

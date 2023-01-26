@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CompanionMovement : MonoBehaviour
+public class CompanionMovement : MovementAbstract
 {
     GameManager gm;
     [SerializeField] Vector3 rightOffset;
     [SerializeField] Vector3 leftOffset;
-    [SerializeField] PlayerAnimationHandler animHandler;
 
     // Controls the speed of the camera following
     [SerializeField] float speed;
     // Controls the speed of switching between left/right
     [SerializeField] float lerpSpeed;
-    
+
     float directionalOffset;
     bool isLeft;
     Vector3 offset, currentOffset;
