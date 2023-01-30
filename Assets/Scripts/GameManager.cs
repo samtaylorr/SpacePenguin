@@ -23,6 +23,10 @@ public class Character {
     public void setMaxHP(float maxHP){ this._maxHP = maxHP; }
 }
 
+// THIS CLASS IS TEMPORARY.
+// EVENTUALLY WE SHOULD GET THIS FROM EITHER PLAYERPREFS OR AN ENCRYPTED JSON FILE DEPENDENT ON SAVES.
+// BUT FOR NOW WE CAN JUST PULL PLAYER AND COMPANION ACTIONS FROM THIS REGISTER
+
 public static class ActionRegister {
     public static Action PLAYER_BASIC_JUMP = new Action(Resources.Load("Prefabs/Battle/Actions/PlayerJump") as GameObject, "Basic Jump");
 
@@ -32,11 +36,13 @@ public static class ActionRegister {
 
 }
 
+// WE USE THIS TO PULL IN SPAWNABLE CHARACTERS WHEN WE LOAD A NEW SCENE
+
 public static class CharacterRegister {
     public static Character GLOBAL_PLAYER = new Character(
-                                                        Resources.Load("Prefabs/Overworld/Player") as GameObject,
-                                                        Resources.Load("Prefabs/Battle/Player") as GameObject,
-                                                        Resources.Load("Sprites/Dog.psd") as Sprite,
+                                                        Resources.Load("Prefabs/Overworld/Player") as GameObject, // OVERWORLD CHARACTER TO SPAWN
+                                                        Resources.Load("Prefabs/Battle/Player") as GameObject, // BATTLE CHARACTER TO SPAWN
+                                                        Resources.Load("Sprites/Dog.psd") as Sprite, // SPRITE
                                                         10, 10
                                                     );
     
@@ -48,6 +54,8 @@ public static class CharacterRegister {
                                                      );
 
     public static Character GLOBAL_COMPANION = DOG_COMPANION;
+
+    // TODO: USE THESE FUNCTIONS TO SWAP PLAYERS AND CHARACTERS IN A UI MENU IN THE OVERWORLD OR IN BATTLE AS A TURN
 
     public static void UpdatePlayer     (Character player)            { GLOBAL_PLAYER        =    player;             }
     public static void UpdateCompanion  (Character companion)         { GLOBAL_COMPANION     =    companion;          }
