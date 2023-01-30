@@ -28,18 +28,22 @@ public class UIManager : MonoBehaviour
 
         if(horizontal && isActive){
             float axis        =       Input.GetAxis("Horizontal");
-            if(axis>0)              { playerWheel.SetTrigger("Next");         }
-            else                    { playerWheel.SetTrigger("Previous");     }
-            playerWheel.SetTrigger("Switch");
+            if(axis>0)              { currentWheel.SetTrigger("Next");         }
+            else                    { currentWheel.SetTrigger("Previous");     }
+            currentWheel.SetTrigger("Switch");
         }
 
         if(vertical && isActive){
             float axis        =       Input.GetAxis("Vertical");
-            if(axis>0)              { playerWheel.SetTrigger("Next");         }
-            else                    { playerWheel.SetTrigger("Previous");     }
-            playerWheel.SetTrigger("Switch");
+            if(axis>0)              { currentWheel.SetTrigger("Next");         }
+            else                    { currentWheel.SetTrigger("Previous");     }
+            currentWheel.SetTrigger("Switch");
         }
 
+    }
+
+    public void ToggleWheelActive(){
+        currentWheel.GetComponent<WheelManager>().ToggleActive();
     }
 
     public void ToggleWheelType(bool isPlayer){
@@ -48,7 +52,8 @@ public class UIManager : MonoBehaviour
     }
 
     public void EnableActionMenu(PlayerActions type){
-        actionMenu.Reset(playerWheel.GetComponent<WheelManager>());
+        ToggleWheelActive();
+        actionMenu.Reset();
         if(type == PlayerActions.PLAYER_JUMP){
             foreach(Action a in ActionRegister.PLAYER_JUMP){
                 actionMenu.Add(a);

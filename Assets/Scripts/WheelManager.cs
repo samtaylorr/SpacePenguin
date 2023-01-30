@@ -6,15 +6,11 @@ using UnityEngine;
 public class WheelManager : MonoBehaviour
 {
     public PlayerActions selectedAction = PlayerActions.PLAYER_JUMP;
-    BattleManager bm;
     Animator anim;
     public bool active;
-
-    public void SetBM(BattleManager bm){
-        this.bm = bm;
-    }
-
+    
     public void ToggleActive(){
+        anim = GetComponent<Animator>();
         active = !active;
     }
 

@@ -8,7 +8,7 @@ public class ActionMenu : MonoBehaviour
     public GameObject actionButton, selectionArrow;
     public Transform content;
     List<GameObject> actions = new List<GameObject>();
-    WheelManager currentWheel;
+    UIManager ui;
     BattleManager bm;
 
     float startY = 65, Y, gap = 40;
@@ -16,6 +16,7 @@ public class ActionMenu : MonoBehaviour
     void Awake(){
         Y = startY;
         if(bm == null){ bm = BattleManager.Get(); }
+        if(ui == null){ ui = UIManager.Get(); }
     }
 
     // Update is called once per frame
@@ -26,8 +27,8 @@ public class ActionMenu : MonoBehaviour
 
         if(horizontal){
             float axis        =       Input.GetAxis("Horizontal");
-            if(axis>0)                { bm.ChangeVictim(false);        }
-            else                      { bm.ChangeVictim(true);       }
+            if(axis>0)                { bm.ChangeVictim(false); }
+            else                      { bm.ChangeVictim(true);  }
         }
 
         if(Input.GetButtonDown("Cancel")){
@@ -36,12 +37,11 @@ public class ActionMenu : MonoBehaviour
     }
 
     public void Cancel(){
-        currentWheel.ToggleActive();
+        ui.ToggleWheelActive();
         this.gameObject.SetActive(false);
     }
 
-    public void Reset(WheelManager wheel){
-        currentWheel = wheel;
+    public void Reset(){
         foreach(GameObject a in actions){ Destroy(a);  }
         actions = new List<GameObject>();
         Y = startY;

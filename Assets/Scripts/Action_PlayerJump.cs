@@ -59,7 +59,6 @@ public class Action_PlayerJump : ActionModule
         i--;
         SpawnHit(damage);
         victim.GetComponent<Enemy>().PlayHit();
-        yield return new WaitForSeconds(0.05f);
 
         if(combo){
             Vector3 secondJump = new Vector3(attacker.transform.position.x, attacker.transform.position.y + 10f, attacker.transform.position.z);
@@ -78,7 +77,6 @@ public class Action_PlayerJump : ActionModule
 
             SpawnHit(damage);
             victim.GetComponent<Enemy>().PlayHit();
-            yield return new WaitForSeconds(0.05f);
             damage*=damage;
 
             followPath =  true;
