@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     public float hp, dp, ap;
     Animator anim;
@@ -24,4 +24,6 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1);
         Destroy(this.gameObject);
     }
+
+    public abstract void AI_TakeTurn(GameManager gm, BattleManager bm);
 }

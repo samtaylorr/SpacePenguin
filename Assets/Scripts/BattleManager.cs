@@ -35,7 +35,7 @@ public class BattleManager : MonoBehaviour
     UIManager ui;
 
     public float turns;
-    float currentTurn = 0;
+    int currentTurn = 0;
 
     public GameObject currentAttacker, currentVictim;
     public int selectedEnemy;
@@ -85,22 +85,33 @@ public class BattleManager : MonoBehaviour
     // Call this whenever the player turn switches
     private void SwitchTurn()
     {
-        if (currentTurn == 0) // Player
-        {
-            currentAttacker = localPlayer;
-            ui.ToggleWheelType(true);
-            ui.playerWheel.gameObject.SetActive(true);
-            currentVictim = localEnemies[selectedEnemy];
-        }
-        else if (currentTurn == 1) // Companion
-        {
-            currentAttacker = localCompanion;
-            ui.ToggleWheelType(false);
-            ui.companionWheel.gameObject.SetActive(true);
-            currentVictim = localEnemies[selectedEnemy];
+        if(localEnemies.Count > -1){
+                if (currentTurn == 0) // Player
+            {
+                currentAttacker = localPlayer;
+                ui.ToggleWheelType(true);
+                ui.playerWheel.gameObject.SetActive(true);
+                currentVictim = localEnemies[selectedEnemy];
+            }
+            else if (currentTurn == 1) // Companion
+            {
+                currentAttacker = localCompanion;
+                ui.ToggleWheelType(false);
+                ui.companionWheel.gameObject.SetActive(true);
+                currentVictim = localEnemies[selectedEnemy];
 
-            // Implement companion wheel - Task 1
-            // Implement companion attack (consider making Player Jump more generic)
+                // Implement companion attack (consider making Player Jump more generic)
+            } else {
+                ui.playerWheel.gameObject.SetActive(false);
+                ui.companionWheel.gameObject.SetActive(false);
+                int index = currentTurn - 2;
+                if (index > -1 && index < localEnemies.Count){
+                    currentAttacker = localEnemies[index];
+                    currentAttacker.GetComponent<Enemy>().AI_TakeTurn(gm, this);
+                }
+            }
+        } else {
+            Debug.Log("Battle over");
         }
     }
 
@@ -109,7 +120,6 @@ public class BattleManager : MonoBehaviour
     public void EndPlayerTurn(Turn turn, Enemy enemy){
         enemy.hp -= turn.damage;
         if(enemy.hp <= 0){
-            selectedEnemy = 0;
             localEnemies.Remove(enemy.gameObject);
             enemy.Kill();
         }
@@ -139,10 +149,5 @@ public class BattleManager : MonoBehaviour
         }
 
         currentVictim = localEnemies[selectedEnemy];
-    }
-
-    // Update is called once per frame
-    void Update(){
-
     }
 }

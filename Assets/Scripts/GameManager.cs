@@ -29,6 +29,7 @@ public class Character {
 
 public static class ActionRegister {
     public static Action PLAYER_BASIC_JUMP = new Action(Resources.Load("Prefabs/Battle/Actions/PlayerJump") as GameObject, "Basic Jump");
+    public static Action ENEMY_SHOOT_ENERGY_WAVE = new Action(Resources.Load("Prefabs/Battle/Actions/EnergyWave") as GameObject, "Shoot Energy Wave");
 
     public static List<Action> PLAYER_JUMP = new List<Action> {
         PLAYER_BASIC_JUMP
