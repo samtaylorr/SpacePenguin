@@ -115,15 +115,8 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-
-
-    public void EndPlayerTurn(Turn turn, Enemy enemy){
-        enemy.hp -= turn.damage;
-        if(enemy.hp <= 0){
-            localEnemies.Remove(enemy.gameObject);
-            enemy.Kill();
-        }
-
+    void EndTurn()
+    {
         if (currentTurn + 1 < turns)
         {
             currentTurn++;
@@ -132,6 +125,29 @@ public class BattleManager : MonoBehaviour
 
         SwitchTurn();
     }
+
+
+    public void EndTurn(Turn turn, Enemy enemy){
+        enemy.hp -= turn.damage;
+        if(enemy.hp <= 0){
+            localEnemies.Remove(enemy.gameObject);
+            enemy.Kill();
+        }
+
+        EndTurn();
+    }
+
+    public void EndTurn(Turn turn, Character player)
+    {
+        player.setHP(player.HP() - turn.damage);
+        if (player.HP() <= 0)
+        {
+            Debug.Log("Handle game over");
+        }
+
+        EndTurn();
+    }
+
 
     public void ChangeVictim(bool moveLeft){
         if(!moveLeft){

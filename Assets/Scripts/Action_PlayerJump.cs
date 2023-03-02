@@ -89,7 +89,7 @@ public class Action_PlayerJump : ActionModule
             i--;
         }
         animHandler.SetGrounded();
-        bm.EndPlayerTurn(new Turn(damage), victim.GetComponent<Enemy>());
+        bm.EndTurn(new Turn(damage), victim.GetComponent<Enemy>());
         Destroy(this.gameObject);
     }
 

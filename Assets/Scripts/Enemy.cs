@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,4 +27,10 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public abstract void AI_TakeTurn(GameManager gm, BattleManager bm);
+
+    public IEnumerator SimulateThinking(Func<int> function)
+    {
+        yield return new WaitForSeconds(1);
+        function();
+    }
 }
