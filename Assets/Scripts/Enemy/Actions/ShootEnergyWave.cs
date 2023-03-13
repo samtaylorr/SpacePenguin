@@ -20,7 +20,7 @@ public class ShootEnergyWave : ActionModule
     bool hasArrived(Vector3 p1, Vector3 p2)
     {
         Debug.Log(Vector3.Distance(p1, p2));
-        if (Vector3.Distance(p1, p2) < 3) { return true; }
+        if (Vector3.Distance(p1, p2) < 3.5f) { return true; }
         else { return false; }
     }
 

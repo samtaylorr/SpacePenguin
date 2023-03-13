@@ -34,7 +34,6 @@ public class BattleManager : MonoBehaviour
     GameManager gm;
     UIManager ui;
 
-    public float turns;
     int currentTurn = 0;
 
     public GameObject currentAttacker, currentVictim;
@@ -42,6 +41,10 @@ public class BattleManager : MonoBehaviour
 
     public static BattleManager Get(){
         return GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
+    }
+
+    public float Turns(){
+        return localEnemies.Count + 2;
     }
 
     // Start is called before the first frame update
@@ -75,8 +78,6 @@ public class BattleManager : MonoBehaviour
             localEnemies.Add(enemy);
         }
 
-        turns = battle.enemies.Length + 2;
-
         gm.SceneChanged();
 
         SwitchTurn();
@@ -85,20 +86,20 @@ public class BattleManager : MonoBehaviour
     // Call this whenever the player turn switches
     private void SwitchTurn()
     {
-        if(localEnemies.Count > -1){
+        if(localEnemies.Count > 0){
                 if (currentTurn == 0) // Player
             {
                 currentAttacker = localPlayer;
                 ui.ToggleWheelType(true);
                 ui.playerWheel.gameObject.SetActive(true);
-                currentVictim = localEnemies[selectedEnemy];
+                currentVictim = localEnemies[0];
             }
             else if (currentTurn == 1) // Companion
             {
                 currentAttacker = localCompanion;
                 ui.ToggleWheelType(false);
                 ui.companionWheel.gameObject.SetActive(true);
-                currentVictim = localEnemies[selectedEnemy];
+                currentVictim = localEnemies[0];
 
                 // Implement companion attack (consider making Player Jump more generic)
             } else {
@@ -117,7 +118,7 @@ public class BattleManager : MonoBehaviour
 
     void EndTurn()
     {
-        if (currentTurn + 1 < turns)
+        if (currentTurn + 1 < Turns())
         {
             currentTurn++;
         }
