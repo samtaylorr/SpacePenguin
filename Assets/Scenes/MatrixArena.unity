@@ -406,7 +406,6 @@ MonoBehaviour:
   localPlayer: {fileID: 0}
   localCompanion: {fileID: 0}
   localEnemies: []
-  turns: 0
   currentAttacker: {fileID: 0}
   currentVictim: {fileID: 0}
   selectedEnemy: 0

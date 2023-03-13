@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.github.teodorvecerdi.dialoguegraph": "https://github.com/TeodorVecerdi/DialogueGraph.git",
     "com.unity.2d.animation": "8.0.3",
     "com.unity.2d.psdimporter": "7.0.2",
     "com.unity.2d.spriteshape": "8.0.1",

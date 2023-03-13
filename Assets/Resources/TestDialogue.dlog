@@ -1,0 +1,29 @@
+{
+    "AssetGuid": "0544741f16da996428780c288707aca3",
+    "IsBlackboardVisible": false,
+    "DialogueGraphVersion": "2.0.0",
+    "nodes": [
+        {
+            "GUID": "b6ecf744-ac9c-47e6-9bf0-92b59e2021ab",
+            "Type": "DialogueGraph.SelfNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 442.0,
+                    "y": 350.0,
+                    "width": 348.0,
+                    "height": 165.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Test dialogue\\\",\\\"PortGuidA\\\":\\\"bc3f87c7-d051-43f1-923c-60a5c08cb119\\\",\\\"PortGuidB\\\":\\\"605abb63-edb2-46a4-8c84-569ab6e124dd\\\"}]\"}",
+            "PortData": [
+                "2625d6b8-8b5d-4f9f-86cb-2ef785bd4b65",
+                "bc3f87c7-d051-43f1-923c-60a5c08cb119",
+                "605abb63-edb2-46a4-8c84-569ab6e124dd"
+            ]
+        }
+    ],
+    "edges": [],
+    "serializedProperties": []
+}
