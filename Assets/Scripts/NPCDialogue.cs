@@ -1,6 +1,7 @@
 using DialogueGraph.Runtime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCDialogue : MonoBehaviour {
     public RuntimeDialogueGraph DialogueSystem;
@@ -13,11 +14,12 @@ public class NPCDialogue : MonoBehaviour {
     public TMP_Text PlayerText;
     public TMP_Text NpcText;
     public TMP_Text NpcName;
+    public TMP_Text Prompt;
 
     private bool metBefore = false;
     private bool isAngry = false;
 
-    private bool isInConversation = false;
+    public bool isInConversation = false;
     private bool showingSecondaryScreen;
     private bool showPlayer;
     private bool isPlayerChoosing;
@@ -25,16 +27,40 @@ public class NPCDialogue : MonoBehaviour {
     private bool showingText;
     private string textToShow;
 
+    public void ShowPrompt()
+    {
+        Prompt.text = "[E]";
+    }
+
+    public void HidePrompt()
+    {
+        Prompt.text = "";
+    }
+
+    public void Activate()
+    {
+        if (!isInConversation)
+        {
+            DialogueSystem.ResetConversation();
+            isInConversation = true;
+            (showPlayer ? PlayerContainer : NpcContainer).SetActive(true);
+        }
+    }
+
+    public void Start()
+    {
+        GameManager.Get().SetDialogue(this);
+    }
+
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Z) && !isInConversation) {
             metBefore = false;
             isAngry = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && !isInConversation) {
-            DialogueSystem.ResetConversation();
-            isInConversation = true;
-            (showPlayer ? PlayerContainer : NpcContainer).SetActive(true);
+        if (Input.GetKeyDown(KeyCode.F)) {
+            Activate();
+            GameManager.Get().GetPlayer().
         }
 
         if (showingSecondaryScreen) {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Character {
@@ -66,6 +67,14 @@ public class GameManager : MonoBehaviour
 {
     public bool moving, jumping;
     public GameObject player, companion;
+    public NPCDialogue dialogue;
+    public TMPro.TMP_Text prompt;
+
+    public void SetDialogue(NPCDialogue dialogue)
+    {
+        this.dialogue = dialogue;
+        this.dialogue.Prompt = prompt;
+    }
 
     public void SceneChanged(){
         player = GameObject.FindGameObjectWithTag("Player");

@@ -14,6 +14,7 @@ public class PlayerMovement : MovementAbstract
     bool isLeft = false;
     CameraMovement mainCam;
     GameManager gm;
+    public bool isEnabled;
 
     // Start is called before the first frame update
     void Start()
@@ -21,44 +22,58 @@ public class PlayerMovement : MovementAbstract
         rb = GetComponent<Rigidbody>();
         collisions = GetComponent<EdgeDetection>();
         gm = GameManager.Get();
+        isEnabled = true;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        // Get input axis
-        float horizontal    =   Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        float vertical      =   Input.GetAxis("Vertical")   * speed * Time.deltaTime;
+        if (isEnabled)
+        {
+            // Get input axis
+            float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+            float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
-        if(Input.GetButtonDown("Jump") && isGrounded){
-            rb.AddForce(transform.up * jumpForce);
-            animHandler.SetJump();
-            isGrounded = false;
-        }
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                rb.AddForce(transform.up * jumpForce);
+                animHandler.SetJump();
+                isGrounded = false;
+            }
 
-        CollisionHit result = collisions.DetectCollision();
-        if(horizontal <= 0 && result.left){ horizontal = 0; }
-        if(horizontal >= 0 && result.right){ horizontal = 0; }
+            CollisionHit result = collisions.DetectCollision();
+            if (horizontal <= 0 && result.left) { horizontal = 0; }
+            if (horizontal >= 0 && result.right) { horizontal = 0; }
 
-        transform.Translate(horizontal, 0, vertical);
+            transform.Translate(horizontal, 0, vertical);
 
-        if(horizontal < 0 || vertical < 0){
-            gm.moving = true;
-            animHandler.SetMove();
-        } else if(horizontal > 0 || vertical > 0){
-            gm.moving = true;
-            animHandler.SetMove();
-        } else {
-            gm.moving = false;
+            if (horizontal < 0 || vertical < 0)
+            {
+                gm.moving = true;
+                animHandler.SetMove();
+            }
+            else if (horizontal > 0 || vertical > 0)
+            {
+                gm.moving = true;
+                animHandler.SetMove();
+            }
+            else
+            {
+                gm.moving = false;
+                animHandler.SetIdle();
+            }
+
+            if (horizontal > 0) { animHandler.SetRight(); isLeft = false; }
+            else if (horizontal < 0) { animHandler.SetLeft(); isLeft = true; }
+            gm.UpdateDirections(isLeft);
+
+            if (vertical < 0) { animHandler.SetFront(); }
+            else if (vertical > 0.05f) { animHandler.SetBack(); }
+        } else
+        {
             animHandler.SetIdle();
+            gm.moving = false;
         }
-
-        if(horizontal > 0){ animHandler.SetRight(); isLeft = false; }
-        else if(horizontal < 0){ animHandler.SetLeft(); isLeft = true; }
-        gm.UpdateDirections(isLeft);
-
-        if(vertical < 0){ animHandler.SetFront(); }
-        else if(vertical > 0.05f){ animHandler.SetBack(); }
     }
 
     void FixedUpdate(){

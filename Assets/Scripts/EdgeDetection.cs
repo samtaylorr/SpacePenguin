@@ -29,9 +29,6 @@ public class EdgeDetection : MonoBehaviour
         RaycastHit left, right;
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z);
 
-        Debug.DrawRay(pos, transform.TransformDirection(-Vector3.right) * collisionDistance, Color.red);
-        Debug.DrawRay(pos, transform.TransformDirection(Vector3.right) * collisionDistance, Color.green);
-
         if(Physics.Raycast(pos, transform.TransformDirection(-Vector3.right), out left, collisionDistance, layerMask)){
             result.left = true;
         } else { result.left = false; }
