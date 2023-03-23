@@ -63,18 +63,13 @@ public static class CharacterRegister {
     public static void UpdateCompanion  (Character companion)         { GLOBAL_COMPANION     =    companion;          }
 }
 
+
+[RequireComponent(typeof(DialogueUIElements))]
 public class GameManager : MonoBehaviour
 {
     public bool moving, jumping;
     public GameObject player, companion;
-    public NPCDialogue dialogue;
     public TMPro.TMP_Text prompt;
-
-    public void SetDialogue(NPCDialogue dialogue)
-    {
-        this.dialogue = dialogue;
-        this.dialogue.Prompt = prompt;
-    }
 
     public void SceneChanged(){
         player = GameObject.FindGameObjectWithTag("Player");
@@ -83,6 +78,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject GetPlayer(){
         return player;
+    }
+
+    public DialogueUIElements GetDialogueUIElements(){
+        return GetComponent<DialogueUIElements>();
     }
 
     public GameObject GetCompanion(){

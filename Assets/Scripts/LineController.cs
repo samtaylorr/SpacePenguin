@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class LineController : MonoBehaviour {
     public LineEntry Prefab;
-    public NPCDialogue Owner;
+    public NPC Owner;
     private List<LineEntry> entries;
     private int selectedIndex;
     private bool isActive;
@@ -51,7 +51,7 @@ public class LineController : MonoBehaviour {
             selectedIndex = nextIndex;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.E)) {
             SelectLine(selectedIndex);
         }
     }

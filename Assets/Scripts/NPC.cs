@@ -1,16 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using DialogueGraph.Runtime;
 
 public class NPC : MonoBehaviour
 {
     public bool questMarker;
     public GameObject questMarkerPrefab;
-    NPCDialogue dialogue;
 
     [Header("Detection")]
     [SerializeField] Bound movementBounds;
     [SerializeField] float collisionDistance = 3;
+
+    public RuntimeDialogueGraph DialogueSystem;
+
+    DialogueUIElements dialogueUIElements;
+
+    private bool metBefore = false;
+    private bool isAngry = false;
+
+    private bool isInConversation = false;
+    private bool showingSecondaryScreen;
+    private bool showPlayer;
+    private bool isPlayerChoosing;
+    private bool shouldShowText;
+    private bool showingText;
+    private string textToShow;
+
+    public void Awake(){
+        dialogueUIElements = GameManager.Get().GetDialogueUIElements();
+    }
+
+    public void ShowPrompt()
+    {
+        dialogueUIElements.Prompt.text = "[E]";
+    }
+
+    public void HidePrompt()
+    {
+        dialogueUIElements.Prompt.text = "";
+    }
+
+    public void Activate()
+    {
+        if (!isInConversation)
+        {
+            DialogueSystem.ResetConversation();
+            isInConversation = true;
+            (showPlayer ? dialogueUIElements.PlayerContainer : dialogueUIElements.NpcContainer).SetActive(true);
+        }
+    }
 
     // Shoots a spherical raycast to detect if the player is in the right distance
     // to activate dialogue
@@ -48,37 +88,128 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dialogue == null) { dialogue = GameManager.Get().dialogue; }
-        else if (dialogue != null && !dialogue.isInConversation)
+        CollisionHit result = PlayerDetection();
+
+        if ((result.left || result.right) && !isInConversation)
         {
-            
-            CollisionHit result = PlayerDetection();
+            ShowPrompt();
+        }
+        else
+        {
+            HidePrompt();
+        }
 
-            if ((result.left || result.right) && dialogue != null)
-            {
-                dialogue.ShowPrompt();
+        if (Input.GetKeyDown(KeyCode.E) && (result.left || result.right) && !isInConversation)
+        {
+            HidePrompt();
+            Activate();
+        }
+
+        if (questMarker && !questMarkerPrefab.activeInHierarchy)
+        {
+            questMarkerPrefab.SetActive(true);
+        }
+
+        if (!questMarker && questMarkerPrefab.activeInHierarchy)
+        {
+            questMarkerPrefab.SetActive(false);
+        }
+
+        if (!isInConversation || isPlayerChoosing) return;
+        if (shouldShowText) {
+            (showPlayer ? dialogueUIElements.PlayerContainer : dialogueUIElements.NpcContainer).SetActive(true);
+            (showPlayer ? dialogueUIElements.PlayerText : dialogueUIElements.NpcText).gameObject.SetActive(true);
+            (showPlayer ? dialogueUIElements.PlayerText : dialogueUIElements.NpcText).text = textToShow;
+            showingText = true;
+            shouldShowText = false;
+        }
+
+        if (showingText) {
+            if (Input.GetKeyDown(KeyCode.E)) {
+                showingText = false;
+                (showPlayer ? dialogueUIElements.PlayerContainer : dialogueUIElements.NpcContainer).SetActive(false);
+                (showPlayer ? dialogueUIElements.PlayerText : dialogueUIElements.NpcText).gameObject.SetActive(false);
             }
-            else if ((!result.left && !result.right) && dialogue != null)
-            {
-                dialogue.HidePrompt();
+        } else {
+            if (DialogueSystem.IsConversationDone()) {
+                // Reset state
+                isInConversation = false;
+                showingSecondaryScreen = false;
+                showPlayer = false;
+                isPlayerChoosing = false;
+                shouldShowText = false;
+                showingText = false;
+
+                dialogueUIElements.PlayerContainer.SetActive(false);
+                dialogueUIElements.NpcContainer.SetActive(false);
+                return;
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && (result.left || result.right))
-            {
-                dialogue.HidePrompt();
-                dialogue.Activate();
-            }
-
-            if (questMarker && !questMarkerPrefab.activeInHierarchy)
-            {
-                questMarkerPrefab.SetActive(true);
-            }
-
-            if (!questMarker && questMarkerPrefab.activeInHierarchy)
-            {
-                questMarkerPrefab.SetActive(false);
+            var isNpc = DialogueSystem.IsCurrentNpc();
+            if (isNpc) {
+                var currentActor = DialogueSystem.GetCurrentActor();
+                showPlayer = false;
+                shouldShowText = true;
+                textToShow = DialogueSystem.ProgressNpc();
+                dialogueUIElements.NpcName.text = currentActor.Name;
+            } else {
+                var currentLines = DialogueSystem.GetCurrentLines();
+                isPlayerChoosing = true;
+                dialogueUIElements.PlayerContainer.SetActive(true);
+                dialogueUIElements.LineController.gameObject.SetActive(true);
+                dialogueUIElements.LineController.Initialize(currentLines);
             }
         }
         
+    }
+
+    public void PlayerSelect(int index) {
+        dialogueUIElements.LineController.gameObject.SetActive(false);
+        textToShow = DialogueSystem.ProgressSelf(index);
+        isPlayerChoosing = false;
+        shouldShowText = true;
+        showPlayer = true;
+    }
+
+    public bool MetBefore(string node, int lineIndex) {
+        return metBefore;
+    }
+
+    public bool Angry(string node, int lineIndex) {
+        return isAngry;
+    }
+
+    public void Meet(string node, int lineIndex) {
+        metBefore = true;
+    }
+
+    public void MakeAngry(string node, int lineIndex) {
+        isAngry = true;
+    }
+
+    public void ClearAngry(string node, int lineIndex) {
+        isAngry = false;
+    }
+
+    public void PlayGame(string node, int lineIndex) {
+        showingSecondaryScreen = true;
+        dialogueUIElements.SecondaryScreen.SetActive(true);
+
+        dialogueUIElements.NpcContainer.SetActive(false);
+        dialogueUIElements.PlayerContainer.gameObject.SetActive(false);
+        showingText = false;
+        dialogueUIElements.PlayerText.gameObject.SetActive(false);
+        dialogueUIElements.NpcText.gameObject.SetActive(false);
+    }
+
+    public void OpenShop(string node, int lineIndex) {
+        showingSecondaryScreen = true;
+        dialogueUIElements.SecondaryScreen.SetActive(true);
+
+        dialogueUIElements.NpcContainer.SetActive(false);
+        dialogueUIElements.PlayerContainer.gameObject.SetActive(false);
+        showingText = false;
+        dialogueUIElements.PlayerText.gameObject.SetActive(false);
+        dialogueUIElements.NpcText.gameObject.SetActive(false);
     }
 }
