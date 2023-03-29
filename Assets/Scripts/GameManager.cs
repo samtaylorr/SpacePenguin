@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class Character {
     public GameObject overworld;
@@ -78,17 +75,20 @@ public enum Music
 public class GameManager : MonoBehaviour
 {
     public bool moving, jumping;
-    public GameObject player, companion;
+    public GameObject player, companion, camera;
     public TMPro.TMP_Text prompt;
     AudioSource audioSource;
 
     public void SceneChanged(){
-        player = GameObject.FindGameObjectWithTag("Player");
-        companion = GameObject.FindGameObjectWithTag("Companion");
+        player.transform.position = new Vector3(0,0,0);
+        return;
     }
 
     public GameObject GetPlayer(){
         return player;
+    }
+
+    public void LoadPlayer(){
     }
 
     public void SwitchMusic(Music music)
@@ -136,8 +136,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void UpdateDirections(bool isLeft){
-        CameraMovement cam = Camera.main.GetComponent<CameraMovement>();
-        if(cam != null){ cam.UpdateDirection(isLeft); }
-        companion.GetComponent<CompanionMovement>().UpdateDirection(isLeft);
+        CameraMovement cam = camera.GetComponent<CameraMovement>();
+        cam.UpdateDirection(isLeft);
+        if(companion != null){ companion.GetComponent<CompanionMovement>().UpdateDirection(isLeft); }
     }
 }

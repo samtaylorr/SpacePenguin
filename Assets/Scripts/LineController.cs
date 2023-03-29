@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DialogueGraph.Runtime;
 using UnityEngine;
 
@@ -16,8 +14,9 @@ public class LineController : MonoBehaviour {
         entries.Clear();
     }
 
-    public void Initialize(List<ConversationLine> lines) {
+    public void Initialize(List<ConversationLine> lines, NPC owner) {
         isActive = true;
+        Owner = owner;
         entries = new List<LineEntry>();
         for (var i = 0; i < lines.Count; i++) {
             var line = lines[i];

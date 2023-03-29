@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9179369866537755534, guid: 34f5f90d675bf2e47b63f26ed8a25320, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 483121944}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 34f5f90d675bf2e47b63f26ed8a25320, type: 3}
@@ -401,6 +405,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &483121944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4689747517174131054, guid: 34f5f90d675bf2e47b63f26ed8a25320, type: 3}
+  m_PrefabInstance: {fileID: 227678837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &747554898
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +701,6 @@ GameObject:
   m_Component:
   - component: {fileID: 997050283}
   - component: {fileID: 997050282}
-  - component: {fileID: 997050281}
   - component: {fileID: 997050280}
   m_Layer: 0
   m_Name: Main Camera
@@ -734,14 +742,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!81 &997050281
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997050279}
-  m_Enabled: 1
 --- !u!20 &997050282
 Camera:
   m_ObjectHideFlags: 0

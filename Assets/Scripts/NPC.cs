@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using DialogueGraph.Runtime;
 
 public class NPC : MonoBehaviour
@@ -162,7 +159,7 @@ public class NPC : MonoBehaviour
                 isPlayerChoosing = true;
                 dialogueUIElements.PlayerContainer.SetActive(true);
                 dialogueUIElements.LineController.gameObject.SetActive(true);
-                dialogueUIElements.LineController.Initialize(currentLines);
+                dialogueUIElements.LineController.Initialize(currentLines, this);
             }
         }
         
