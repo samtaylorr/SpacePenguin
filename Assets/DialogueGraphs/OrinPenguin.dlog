@@ -1,0 +1,139 @@
+{
+    "AssetGuid": "566c5bc273737874dba70bb48953b303",
+    "IsBlackboardVisible": true,
+    "DialogueGraphVersion": "2.0.0",
+    "nodes": [
+        {
+            "GUID": "9dc36f7f-eaaf-4616-9972-dc92c2ff37e7",
+            "Type": "DialogueGraph.PropertyNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 463.0,
+                    "y": 386.0,
+                    "width": 61.0,
+                    "height": 42.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"propertyGuid\":\"99a6cc24-981b-4fa6-b17a-a0cd8ce2f52b\"}",
+            "PortData": [
+                "af545653-4cfa-43fa-9380-c6148ad983aa"
+            ]
+        },
+        {
+            "GUID": "6957141d-b886-4801-b7f1-0b8cdf18b817",
+            "Type": "DialogueGraph.NpcNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 669.0,
+                    "y": 418.0,
+                    "width": 200.0,
+                    "height": 150.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Oh hey, I've just been chilling around watching nature documentaries\\\",\\\"PortGuidA\\\":\\\"80a3815a-f1eb-4f44-ad07-30d3020508a9\\\",\\\"PortGuidB\\\":\\\"c3db0dbb-a8eb-43c5-b3a4-6e1ca387285a\\\",\\\"PortGuidC\\\":\\\"6c385f62-4438-4748-ba77-c722c1957520\\\"}]\"}",
+            "PortData": [
+                "ce34c94e-c196-47ef-a809-38024229e4c3",
+                "7bdde477-8c38-468c-8823-fb41d7799829",
+                "80a3815a-f1eb-4f44-ad07-30d3020508a9",
+                "c3db0dbb-a8eb-43c5-b3a4-6e1ca387285a",
+                "6c385f62-4438-4748-ba77-c722c1957520"
+            ]
+        },
+        {
+            "GUID": "12214eec-581c-402c-8184-d5a0b51cd7c8",
+            "Type": "DialogueGraph.NpcNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 1242.0,
+                    "y": 468.0,
+                    "width": 394.0,
+                    "height": 177.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"I know I'm supposed to hate them, but Orcas are kinda cute though\\\",\\\"PortGuidA\\\":\\\"e673f494-3226-44ea-b1d9-5aa6cd99b2fb\\\",\\\"PortGuidB\\\":\\\"368604ce-3e55-464b-9fe0-9986acf297c8\\\",\\\"PortGuidC\\\":\\\"8da6237f-bb8d-42de-96bd-688081930126\\\"}]\"}",
+            "PortData": [
+                "97d55d89-77b1-4aa9-a2df-2304bd5a6263",
+                "525b74d5-3938-423d-b278-9cdadd185d60",
+                "e673f494-3226-44ea-b1d9-5aa6cd99b2fb",
+                "368604ce-3e55-464b-9fe0-9986acf297c8",
+                "8da6237f-bb8d-42de-96bd-688081930126"
+            ]
+        },
+        {
+            "GUID": "52c09ff4-fd74-4875-8b4a-00962f2ab78d",
+            "Type": "DialogueGraph.NpcNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 1845.0,
+                    "y": 567.0,
+                    "width": 200.0,
+                    "height": 150.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Uhh... forget that, please don't tell Sir Waddles\\\",\\\"PortGuidA\\\":\\\"6fee7958-4917-48c3-b443-81b097db1bf5\\\",\\\"PortGuidB\\\":\\\"0c6cd523-1e2c-4db2-b55b-4231b1f5f653\\\",\\\"PortGuidC\\\":\\\"467797d5-68b6-4e52-87aa-17dcc2f125d1\\\"}]\"}",
+            "PortData": [
+                "0586c70d-c268-4ff1-97ab-db2be189a4d9",
+                "d22cdafc-50de-4ce5-bee4-c5cf3cfc35bc",
+                "6fee7958-4917-48c3-b443-81b097db1bf5",
+                "0c6cd523-1e2c-4db2-b55b-4231b1f5f653",
+                "467797d5-68b6-4e52-87aa-17dcc2f125d1"
+            ]
+        }
+    ],
+    "edges": [
+        {
+            "Input": "6957141d-b886-4801-b7f1-0b8cdf18b817",
+            "Output": "9dc36f7f-eaaf-4616-9972-dc92c2ff37e7",
+            "InputPort": "7bdde477-8c38-468c-8823-fb41d7799829",
+            "OutputPort": "af545653-4cfa-43fa-9380-c6148ad983aa",
+            "InputCapacity": 0,
+            "OutputCapacity": 1
+        },
+        {
+            "Input": "12214eec-581c-402c-8184-d5a0b51cd7c8",
+            "Output": "6957141d-b886-4801-b7f1-0b8cdf18b817",
+            "InputPort": "97d55d89-77b1-4aa9-a2df-2304bd5a6263",
+            "OutputPort": "80a3815a-f1eb-4f44-ad07-30d3020508a9",
+            "InputCapacity": 1,
+            "OutputCapacity": 0
+        },
+        {
+            "Input": "52c09ff4-fd74-4875-8b4a-00962f2ab78d",
+            "Output": "12214eec-581c-402c-8184-d5a0b51cd7c8",
+            "InputPort": "0586c70d-c268-4ff1-97ab-db2be189a4d9",
+            "OutputPort": "e673f494-3226-44ea-b1d9-5aa6cd99b2fb",
+            "InputCapacity": 1,
+            "OutputCapacity": 0
+        },
+        {
+            "Input": "12214eec-581c-402c-8184-d5a0b51cd7c8",
+            "Output": "9dc36f7f-eaaf-4616-9972-dc92c2ff37e7",
+            "InputPort": "525b74d5-3938-423d-b278-9cdadd185d60",
+            "OutputPort": "af545653-4cfa-43fa-9380-c6148ad983aa",
+            "InputCapacity": 0,
+            "OutputCapacity": 1
+        },
+        {
+            "Input": "52c09ff4-fd74-4875-8b4a-00962f2ab78d",
+            "Output": "9dc36f7f-eaaf-4616-9972-dc92c2ff37e7",
+            "InputPort": "d22cdafc-50de-4ce5-bee4-c5cf3cfc35bc",
+            "OutputPort": "af545653-4cfa-43fa-9380-c6148ad983aa",
+            "InputCapacity": 0,
+            "OutputCapacity": 1
+        }
+    ],
+    "serializedProperties": [
+        {
+            "Type": "DialogueGraph.ActorProperty",
+            "Data": "{\"$type\":\"DialogueGraph.ActorProperty, DialogueGraph.Editor\",\"GUID\":\"99a6cc24-981b-4fa6-b17a-a0cd8ce2f52b\",\"Type\":2,\"DisplayName\":\"Orin\",\"ReferenceName\":\"Actor_CFB38F12\",\"OverrideReferenceName\":null,\"Hidden\":false,\"ShortGuid\":\"CFB38F12\"}"
+        }
+    ]
+}

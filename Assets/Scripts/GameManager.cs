@@ -64,12 +64,23 @@ public static class CharacterRegister {
 }
 
 
+public enum Music
+{
+    MenuMusic,
+    Snow,
+    SnowPlucks,
+    ATalkingDog,
+    TechnoticEscapism,
+    PenguinDojo
+}
+
 [RequireComponent(typeof(DialogueUIElements))]
 public class GameManager : MonoBehaviour
 {
     public bool moving, jumping;
     public GameObject player, companion;
     public TMPro.TMP_Text prompt;
+    AudioSource audioSource;
 
     public void SceneChanged(){
         player = GameObject.FindGameObjectWithTag("Player");
@@ -78,6 +89,33 @@ public class GameManager : MonoBehaviour
 
     public GameObject GetPlayer(){
         return player;
+    }
+
+    public void SwitchMusic(Music music)
+    {
+        switch (music)
+        {
+            case Music.MenuMusic:
+                audioSource.clip = (Resources.Load("Music/00 - Space Penguin") as AudioClip);
+                break;
+            case Music.Snow:
+                audioSource.clip = (Resources.Load("Music/Area 01 - Snow") as AudioClip);
+                break;
+            case Music.SnowPlucks:
+                audioSource.clip = (Resources.Load("Music/Area 01b - Snow Plucks") as AudioClip);
+                break;
+            case Music.PenguinDojo:
+                audioSource.clip = (Resources.Load("Music/Battle 02 - Penguin Dojo") as AudioClip);
+                break;
+            case Music.ATalkingDog:
+                audioSource.clip = (Resources.Load("Music/Area 02 - A Talking Dog") as AudioClip);
+                break;
+            case Music.TechnoticEscapism:
+                audioSource.clip = (Resources.Load("Music/Battle 01 - Technotic Escapism") as AudioClip);
+                break;
+        }
+
+        audioSource.Play();
     }
 
     public DialogueUIElements GetDialogueUIElements(){
@@ -89,6 +127,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void Awake(){
+        audioSource = GetComponent<AudioSource>();
         SceneChanged();
     }
 

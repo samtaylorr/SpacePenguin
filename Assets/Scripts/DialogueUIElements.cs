@@ -15,4 +15,8 @@ public class DialogueUIElements : MonoBehaviour
     public TMP_Text NpcText;
     public TMP_Text NpcName;
     public TMP_Text Prompt;
+
+    [Header("Cutscene References")]
+    public GameObject CutsceneContainer;
+    public TMP_Text CutsceneText;
 }
