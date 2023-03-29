@@ -25,6 +25,10 @@ public class PlayerMovement : MovementAbstract
         isEnabled = true;
     }
 
+    public void setEnabled(bool enabled){
+        isEnabled = enabled;
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {

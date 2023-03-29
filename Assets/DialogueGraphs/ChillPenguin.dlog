@@ -1,0 +1,119 @@
+{
+    "AssetGuid": "ac341ccd3a4b3b54ca3b3444085cc29d",
+    "IsBlackboardVisible": true,
+    "DialogueGraphVersion": "2.0.0",
+    "nodes": [
+        {
+            "GUID": "6873e7bb-3359-4e9b-b3ad-b82928ab60e5",
+            "Type": "DialogueGraph.PropertyNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 250.9996795654297,
+                    "y": 268.7240295410156,
+                    "width": 200.0,
+                    "height": 150.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"propertyGuid\":\"5c38b1fa-b6f3-429a-9d2f-6efe6d373efe\"}",
+            "PortData": [
+                "f739dba0-352b-49ac-95b0-ec4d7b0d330d"
+            ]
+        },
+        {
+            "GUID": "20e22831-16cb-499b-b5fd-538c3a943007",
+            "Type": "DialogueGraph.NpcNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 346.48248291015627,
+                    "y": 301.8857116699219,
+                    "width": 200.0,
+                    "height": 150.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Man I am so chill right now. Like, isn't it just a vibe on this 'berg?\\\",\\\"PortGuidA\\\":\\\"5ce1685d-1be6-4c15-8966-9e14a035188f\\\",\\\"PortGuidB\\\":\\\"0b9b0ab1-6f27-4621-8301-58c1de64d135\\\",\\\"PortGuidC\\\":\\\"a54168e1-a488-4fb0-b5bf-3b85cca85d10\\\"}]\"}",
+            "PortData": [
+                "609d2071-6d06-4b38-8c35-09a6e2bfd4c5",
+                "5471280e-4d02-43e4-8e5e-c95ec045fc89",
+                "5ce1685d-1be6-4c15-8966-9e14a035188f",
+                "0b9b0ab1-6f27-4621-8301-58c1de64d135",
+                "a54168e1-a488-4fb0-b5bf-3b85cca85d10"
+            ]
+        },
+        {
+            "GUID": "3121bfa0-09fe-4080-b6b6-0654362c75f5",
+            "Type": "DialogueGraph.NpcNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 879.0,
+                    "y": 302.0,
+                    "width": 394.0,
+                    "height": 176.99993896484376
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"If you ask me, Sir Waddles needs to take a few breaths, it ain't that serious lil' bro\\\",\\\"PortGuidA\\\":\\\"f8895455-54cd-440a-a172-d53eca040ae3\\\",\\\"PortGuidB\\\":\\\"f7b0d80d-7b2e-4dbc-8769-8f38203e9f2b\\\",\\\"PortGuidC\\\":\\\"e2fdda2a-b6dd-4a3b-9fbe-bc062968295b\\\"}]\"}",
+            "PortData": [
+                "f0f13df7-4d2b-42bf-b2ef-11e4301654b2",
+                "20786f85-6591-4957-8abf-74b8ea8b0123",
+                "f8895455-54cd-440a-a172-d53eca040ae3",
+                "f7b0d80d-7b2e-4dbc-8769-8f38203e9f2b",
+                "e2fdda2a-b6dd-4a3b-9fbe-bc062968295b"
+            ]
+        },
+        {
+            "GUID": "642a37a1-54cd-4847-9c4b-8d03e3b1c320",
+            "Type": "DialogueGraph.PropertyNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 745.0,
+                    "y": 251.0,
+                    "width": 200.0,
+                    "height": 150.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"propertyGuid\":\"5c38b1fa-b6f3-429a-9d2f-6efe6d373efe\"}",
+            "PortData": [
+                "ecc57318-7d40-4cc7-a5eb-822ecf1bac17"
+            ]
+        }
+    ],
+    "edges": [
+        {
+            "Input": "20e22831-16cb-499b-b5fd-538c3a943007",
+            "Output": "6873e7bb-3359-4e9b-b3ad-b82928ab60e5",
+            "InputPort": "5471280e-4d02-43e4-8e5e-c95ec045fc89",
+            "OutputPort": "f739dba0-352b-49ac-95b0-ec4d7b0d330d",
+            "InputCapacity": 0,
+            "OutputCapacity": 1
+        },
+        {
+            "Input": "3121bfa0-09fe-4080-b6b6-0654362c75f5",
+            "Output": "20e22831-16cb-499b-b5fd-538c3a943007",
+            "InputPort": "f0f13df7-4d2b-42bf-b2ef-11e4301654b2",
+            "OutputPort": "5ce1685d-1be6-4c15-8966-9e14a035188f",
+            "InputCapacity": 1,
+            "OutputCapacity": 0
+        },
+        {
+            "Input": "3121bfa0-09fe-4080-b6b6-0654362c75f5",
+            "Output": "642a37a1-54cd-4847-9c4b-8d03e3b1c320",
+            "InputPort": "20786f85-6591-4957-8abf-74b8ea8b0123",
+            "OutputPort": "ecc57318-7d40-4cc7-a5eb-822ecf1bac17",
+            "InputCapacity": 0,
+            "OutputCapacity": 1
+        }
+    ],
+    "serializedProperties": [
+        {
+            "Type": "DialogueGraph.ActorProperty",
+            "Data": "{\"$type\":\"DialogueGraph.ActorProperty, DialogueGraph.Editor\",\"GUID\":\"5c38b1fa-b6f3-429a-9d2f-6efe6d373efe\",\"Type\":2,\"DisplayName\":\"Dave\",\"ReferenceName\":\"Actor_AF628DAC\",\"OverrideReferenceName\":null,\"Hidden\":false,\"ShortGuid\":\"AF628DAC\"}"
+        }
+    ]
+}

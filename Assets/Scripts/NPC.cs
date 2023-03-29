@@ -16,6 +16,7 @@ public class NPC : MonoBehaviour
     public RuntimeDialogueGraph DialogueSystem;
 
     DialogueUIElements dialogueUIElements;
+    PlayerMovement player;
 
     private bool metBefore = false;
     private bool isAngry = false;
@@ -28,26 +29,29 @@ public class NPC : MonoBehaviour
     private bool showingText;
     private string textToShow;
 
+    public GameObject prompt;
+
     public void Awake(){
         dialogueUIElements = GameManager.Get().GetDialogueUIElements();
     }
-
     public void ShowPrompt()
     {
-        dialogueUIElements.Prompt.text = "[E]";
+        prompt.SetActive(true);
     }
 
     public void HidePrompt()
     {
-        dialogueUIElements.Prompt.text = "";
+        prompt.SetActive(false);
     }
 
     public void Activate()
     {
+        player = GameManager.Get().GetPlayer().GetComponent<PlayerMovement>();
         if (!isInConversation)
         {
             DialogueSystem.ResetConversation();
             isInConversation = true;
+            player.setEnabled(false);
             (showPlayer ? dialogueUIElements.PlayerContainer : dialogueUIElements.NpcContainer).SetActive(true);
         }
     }
@@ -134,6 +138,7 @@ public class NPC : MonoBehaviour
             if (DialogueSystem.IsConversationDone()) {
                 // Reset state
                 isInConversation = false;
+                player.setEnabled(true);
                 showingSecondaryScreen = false;
                 showPlayer = false;
                 isPlayerChoosing = false;
@@ -169,6 +174,10 @@ public class NPC : MonoBehaviour
         isPlayerChoosing = false;
         shouldShowText = true;
         showPlayer = true;
+    }
+
+    public void SetMarker(bool marker){
+        questMarker = marker;
     }
 
     public bool MetBefore(string node, int lineIndex) {

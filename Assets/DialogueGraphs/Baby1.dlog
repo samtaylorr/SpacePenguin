@@ -1,0 +1,66 @@
+{
+    "AssetGuid": "45512ded8417a97479cf17c5a8aca87f",
+    "IsBlackboardVisible": true,
+    "DialogueGraphVersion": "2.0.0",
+    "nodes": [
+        {
+            "GUID": "8ebd195b-20fd-4e46-96dc-dc13d24b5c2b",
+            "Type": "DialogueGraph.PropertyNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": -14.0,
+                    "y": 205.0,
+                    "width": 200.0,
+                    "height": 150.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"propertyGuid\":\"6e1821a3-992d-414e-bdf1-4b8d87212db1\"}",
+            "PortData": [
+                "45943413-6f75-4f4f-a8d1-c840bcd1de11"
+            ]
+        },
+        {
+            "GUID": "461cf986-5862-409c-89af-90cf420cea8d",
+            "Type": "DialogueGraph.NpcNode",
+            "DrawState": {
+                "Position": {
+                    "serializedVersion": "2",
+                    "x": 146.0,
+                    "y": 225.0,
+                    "width": 394.0,
+                    "height": 177.0
+                },
+                "Expanded": true
+            },
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Sir Waddles insist I wait here for Mother to come back...\\\",\\\"PortGuidA\\\":\\\"f1743b95-b11d-4396-a42f-9676a706c1d3\\\",\\\"PortGuidB\\\":\\\"6b6e8116-5a68-4e6a-a5d2-4794372f6e22\\\",\\\"PortGuidC\\\":\\\"64db0534-2c00-4e78-9d5d-1446df3aa1b0\\\"},{\\\"Line\\\":\\\"If she's not back soon I'm going to go chase after her anyway, I miss her!\\\",\\\"PortGuidA\\\":\\\"8c8f3e89-9076-4a8b-a5ca-69cf5c98010a\\\",\\\"PortGuidB\\\":\\\"a56d4fe3-f9b1-4e0b-a54d-d9a86a471d95\\\",\\\"PortGuidC\\\":\\\"7d0c616b-cb43-4a51-bb9d-93497d5ec2f1\\\"}]\"}",
+            "PortData": [
+                "df57980d-f38a-43c8-a501-692c9dbac3c3",
+                "b3068a2f-b322-476d-a218-55dd8fab834f",
+                "f1743b95-b11d-4396-a42f-9676a706c1d3",
+                "6b6e8116-5a68-4e6a-a5d2-4794372f6e22",
+                "64db0534-2c00-4e78-9d5d-1446df3aa1b0",
+                "8c8f3e89-9076-4a8b-a5ca-69cf5c98010a",
+                "a56d4fe3-f9b1-4e0b-a54d-d9a86a471d95",
+                "7d0c616b-cb43-4a51-bb9d-93497d5ec2f1"
+            ]
+        }
+    ],
+    "edges": [
+        {
+            "Input": "461cf986-5862-409c-89af-90cf420cea8d",
+            "Output": "8ebd195b-20fd-4e46-96dc-dc13d24b5c2b",
+            "InputPort": "b3068a2f-b322-476d-a218-55dd8fab834f",
+            "OutputPort": "45943413-6f75-4f4f-a8d1-c840bcd1de11",
+            "InputCapacity": 0,
+            "OutputCapacity": 1
+        }
+    ],
+    "serializedProperties": [
+        {
+            "Type": "DialogueGraph.ActorProperty",
+            "Data": "{\"$type\":\"DialogueGraph.ActorProperty, DialogueGraph.Editor\",\"GUID\":\"6e1821a3-992d-414e-bdf1-4b8d87212db1\",\"Type\":2,\"DisplayName\":\"Stewie\",\"ReferenceName\":\"Actor_C043DEB8\",\"OverrideReferenceName\":null,\"Hidden\":false,\"ShortGuid\":\"C043DEB8\"}"
+        }
+    ]
+}
