@@ -1,0 +1,10 @@
+Road to finishing:
+
+- Create Battle Loader, and save certain parts of the scene to load back in on switch.
+- Switch back to scene using Battle Loader
+- Create cutscene with teleport beam, and cutscene inside the ship with the dog companion
+- Create walk way with alien guards
+- Modify fish walk script to include charging at the player if spotted
+- OPTIONAL: Create final boss with robot alien
+- Get to the end, cutscene showing you've taken control of the ship
+- END
