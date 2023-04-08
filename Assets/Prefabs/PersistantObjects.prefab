@@ -444,7 +444,7 @@ Transform:
   - {fileID: 1295827108435409118}
   - {fileID: 4689747517174131057}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2127005147
 MonoBehaviour:
@@ -522,7 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc073e38a1aa5ff468db98be3a8b92ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LineController: {fileID: 0}
+  LineController: {fileID: 8848170286338056337}
   SecondaryScreen: {fileID: 8848170286328624549}
   PlayerContainer: {fileID: 8848170285390893865}
   NpcContainer: {fileID: 8848170285449740302}
@@ -955,6 +955,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8848170285729786748, guid: 29b590bb144641442bab8d0712cfa505, type: 3}
   m_PrefabInstance: {fileID: 635412185}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8848170286338056337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8848170285720354376, guid: 29b590bb144641442bab8d0712cfa505, type: 3}
+  m_PrefabInstance: {fileID: 635412185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f8a8f77c081134daf031e2c4d4c14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1790774828800564859
 PrefabInstance:
   m_ObjectHideFlags: 0

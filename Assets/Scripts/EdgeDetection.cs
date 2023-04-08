@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 public struct Bound {
-    [SerializeField] public float min, max;
+    [SerializeField] public float min, max, trigger;
 }
 
 [System.Serializable]
@@ -23,7 +23,8 @@ public class EdgeDetection : MonoBehaviour
         if(transform.position.z >= movementBounds.max){ transform.position = new Vector3(transform.position.x, transform.position.y, movementBounds.max); }
         else if(transform.position.z <= movementBounds.min){ transform.position = new Vector3(transform.position.x, transform.position.y, movementBounds.min); }
 
-        int layerMask = 1 << 7;
+        int layerMask = (1 << 7);
+        layerMask |= (1 << 16);
         layerMask = ~layerMask;
 
         RaycastHit left, right;

@@ -67,12 +67,12 @@ public class PlayerMovement : MovementAbstract
                 animHandler.SetIdle();
             }
 
-            if (horizontal > 0) { animHandler.SetRight(); isLeft = false; }
-            else if (horizontal < 0) { animHandler.SetLeft(); isLeft = true; }
+            if (horizontal > 0)         { animHandler.SetRight(); isLeft = false; }
+            else if (horizontal < 0)    { animHandler.SetLeft(); isLeft = true;   }
             gm.UpdateDirections(isLeft);
 
-            if (vertical < 0) { animHandler.SetFront(); }
-            else if (vertical > 0.05f) { animHandler.SetBack(); }
+            if (vertical < 0)           { animHandler.SetFront(); }
+            else if (vertical > 0.05f)  { animHandler.SetBack(); }
         } else
         {
             animHandler.SetIdle();
