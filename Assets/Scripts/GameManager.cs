@@ -2,13 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character {
-    public GameObject overworld;
     public GameObject battle;
     public Sprite logo;
     float _HP, _maxHP;
 
-    public Character(GameObject overworld, GameObject battle, Sprite logo, float HP, float maxHP){
-        this.overworld = overworld;
+    public Character(GameObject battle, Sprite logo, float HP, float maxHP){
         this.battle = battle;
         this.logo = logo;
         this._HP = HP;
@@ -39,18 +37,22 @@ public static class ActionRegister {
 
 public static class CharacterRegister {
     public static Character GLOBAL_PLAYER = new Character(
-                                                        Resources.Load("Prefabs/Overworld/Player") as GameObject, // OVERWORLD CHARACTER TO SPAWN
                                                         Resources.Load("Prefabs/Battle/Player") as GameObject, // BATTLE CHARACTER TO SPAWN
                                                         Resources.Load("Sprites/Dog.psd") as Sprite, // SPRITE
                                                         10, 10
                                                     );
     
     public static Character DOG_COMPANION = new Character(
-                                                        Resources.Load("Prefabs/Overworld/Dog") as GameObject,
                                                         Resources.Load("Prefabs/Battle/Dog") as GameObject,
                                                         Resources.Load("Sprites/Penguin.psd") as Sprite,
                                                         5, 5
                                                      );
+
+    public static Character FISH = new Character          (
+                                                        Resources.Load("Prefabs/Battle/Fish") as GameObject,
+                                                        Resources.Load("Sprites/Fish.psd") as Sprite,
+                                                        2, 2
+                                                    );
 
     public static Character GLOBAL_COMPANION = DOG_COMPANION;
 
@@ -143,6 +145,9 @@ public class GameManager : MonoBehaviour
 
     static public GameManager Get(){
         return GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
+
+    public void InitializeBattle(string enemyType){
     }
 
     public void UpdateDirections(bool isLeft){
