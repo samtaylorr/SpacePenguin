@@ -9,7 +9,7 @@ public struct Bound {
 
 [System.Serializable]
 public struct CollisionHit {
-    public bool left, right;
+    public bool left, right, front, back;
 }
 
 public class EdgeDetection : MonoBehaviour

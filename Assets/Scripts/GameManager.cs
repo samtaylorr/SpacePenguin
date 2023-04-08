@@ -118,6 +118,16 @@ public class GameManager : MonoBehaviour
         audioSource.Play();
     }
 
+    public void PauseEntities(){
+        player.GetComponent<PlayerMovement>().setEnabled(false);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.SetActive(false);
+        }
+    }
+
     public DialogueUIElements GetDialogueUIElements(){
         return GetComponent<DialogueUIElements>();
     }

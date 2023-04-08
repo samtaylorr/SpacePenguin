@@ -44,7 +44,12 @@ public class BattleManager : MonoBehaviour
     }
 
     public float Turns(){
-        return localEnemies.Count + 2;
+        if(battle.companion == null){
+            return localEnemies.Count + 1;
+        } else {
+            return localEnemies.Count + 2;
+        }
+        
     }
 
     // Start is called before the first frame update
@@ -55,7 +60,7 @@ public class BattleManager : MonoBehaviour
 
         localEnemies = new List<GameObject>();
         battle.player      =    CharacterRegister.GLOBAL_PLAYER.battle;
-        battle.companion   =    CharacterRegister.GLOBAL_COMPANION.battle;
+        if(battle.companion != null) { battle.companion   =    CharacterRegister.GLOBAL_COMPANION.battle; }
 
         localPlayer =    Instantiate(
                                         battle.player,
@@ -63,11 +68,15 @@ public class BattleManager : MonoBehaviour
                                         spots.playerSpot.transform.rotation
                                     );
 
-        localCompanion = Instantiate(
+        
+        if(battle.companion != null){
+            localCompanion = Instantiate(
                                         battle.companion,
                                         spots.companionSpot.transform.position,
                                         spots.companionSpot.transform.rotation
                                     );
+        }
+        
 
         for(int i = 0; i < battle.enemies.Length; i++){
             GameObject enemy = Instantiate(
@@ -94,7 +103,7 @@ public class BattleManager : MonoBehaviour
                 ui.playerWheel.gameObject.SetActive(true);
                 currentVictim = localEnemies[0];
             }
-            else if (currentTurn == 1) // Companion
+            else if (currentTurn == 1 && battle.companion != null) // Companion
             {
                 currentAttacker = localCompanion;
                 ui.ToggleWheelType(false);
