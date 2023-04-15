@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
     public GameObject player, companion, camera;
     public TMPro.TMP_Text prompt;
     AudioSource audioSource;
+    BattleManager bm;
+    [SerializeField] UIManager ui;
 
     public void SceneChanged(){
         player.transform.position = new Vector3(0,0,0);
@@ -148,8 +150,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void InitializeBattle(string enemyType){
-    }
+        bm = gameObject.AddComponent<BattleManager>();
 
+    }
     public void UpdateDirections(bool isLeft){
         CameraMovement cam = camera.GetComponent<CameraMovement>();
         cam.UpdateDirection(isLeft);

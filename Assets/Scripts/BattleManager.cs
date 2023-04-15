@@ -43,6 +43,11 @@ public class BattleManager : MonoBehaviour
         return GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
     }
 
+    void SetupBattle(Spots spots, Battle battle){
+        this.spots = spots;
+        this.battle = battle;
+    }
+
     public float Turns(){
         if(battle.companion == null){
             return localEnemies.Count + 1;
