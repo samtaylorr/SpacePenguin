@@ -14,16 +14,17 @@ public class Action_PlayerJump : ActionModule
     [SerializeField] UI_SetMapping UIprompt;
 
    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        BattleManager bm = BattleManager.Get();
         UIprompt.SetMapping(ButtonManager.ButtonMappings.Y_KEY);
-        Vector3 victimPos = new Vector3(victim.transform.position.x + (victim.GetComponent<BoxCollider>().size.x/3),
-                                         victim.transform.position.y + victim.GetComponent<BoxCollider>().size.y,
-                                                                        victim.transform.position.z);
+        Vector3 victimPos = new Vector3(bm.currentVictim.transform.position.x + (bm.currentVictim.GetComponent<BoxCollider>().size.x/3),
+                                         bm.currentVictim.transform.position.y + bm.currentVictim.GetComponent<BoxCollider>().size.y,
+                                                                        bm.currentVictim.transform.position.z);
 
-        positions = GetComponent<Bezier>().CalculateCurvePoints(100, attacker.transform.position, victimPos, 25);
+        positions = GetComponent<Bezier>().CalculateCurvePoints(100, bm.currentAttacker.transform.position, victimPos, 25);
         StartCoroutine(Jump());
-        animHandler = attacker.GetComponent<MovementAbstract>().animHandler;
+        animHandler = bm.currentAttacker.GetComponent<MovementAbstract>().animHandler;
         animHandler.SetJump();
     }
 
@@ -41,7 +42,7 @@ public class Action_PlayerJump : ActionModule
     }
 
     bool isComboReady(){
-        if(Vector3.Distance(attacker.transform.position, positions[positions.Length-1]) < 1){ return true; }
+        if(Vector3.Distance(bm.currentAttacker.transform.position, positions[positions.Length-1]) < 1){ return true; }
         else { return false; }
     }
 
@@ -61,17 +62,17 @@ public class Action_PlayerJump : ActionModule
         victim.GetComponent<Enemy>().PlayHit();
 
         if(combo){
-            Vector3 secondJump = new Vector3(attacker.transform.position.x, attacker.transform.position.y + 10f, attacker.transform.position.z);
+            Vector3 secondJump = new Vector3(bm.currentAttacker.transform.position.x, bm.currentAttacker.transform.position.y + 10f, attacker.transform.position.z);
 
             followPath = false;
 
             while(!hasArrived(attacker.transform.position, secondJump)){
-                attacker.transform.position = Vector3.MoveTowards(attacker.transform.position, secondJump, Time.deltaTime * 25);
+                attacker.transform.position = Vector3.MoveTowards(bm.currentAttacker.transform.position, secondJump, Time.deltaTime * 25);
                 yield return new WaitForEndOfFrame();
             }
 
             while(!hasArrived(attacker.transform.position, positions[i])){
-                attacker.transform.position =Vector3.MoveTowards(attacker.transform.position, positions[i], Time.deltaTime * 20);
+                attacker.transform.position =Vector3.MoveTowards(bm.currentAttacker.transform.position, positions[i], Time.deltaTime * 20);
                 yield return new WaitForEndOfFrame();
             }
 
@@ -97,8 +98,8 @@ public class Action_PlayerJump : ActionModule
     void Update()
     {
         if(followPath){
-            attacker.transform.position = Vector3.MoveTowards(attacker.transform.position, positions[i], Time.deltaTime * 50);
-            arrived = hasArrived(attacker.transform.position, positions[i]);
+            attacker.transform.position = Vector3.MoveTowards(bm.currentAttacker.transform.position, positions[i], Time.deltaTime * 50);
+            arrived = hasArrived(bm.currentAttacker.transform.position, positions[i]);
         }
 
         if(isComboReady()){

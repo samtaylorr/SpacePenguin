@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject CompanionBar;
     public Animator playerWheel, companionWheel, currentWheel;
     [SerializeField] ActionMenu actionMenu;
+    [SerializeField] ArrowManager selectionArrow;
 
     static public UIManager Get(){
         return GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>();
@@ -19,9 +20,9 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(BattleManager.Get().localCompanion == null){ CompanionBar.SetActive(false); }
+        if(CharacterRegister.GLOBAL_COMPANION == null)  { CompanionBar.SetActive(false); }
+        else                                            { CompanionHPBar.text = CharacterRegister.GLOBAL_COMPANION.HP() + "/" + CharacterRegister.GLOBAL_COMPANION.maxHP(); }
         PenguinHPBar.text = CharacterRegister.GLOBAL_PLAYER.HP() + "/" + CharacterRegister.GLOBAL_PLAYER.maxHP();
-        CompanionHPBar.text = CharacterRegister.GLOBAL_COMPANION.HP() + "/" + CharacterRegister.GLOBAL_COMPANION.maxHP();
 
         bool isActive = currentWheel.gameObject.GetComponent<WheelManager>().active;
 
@@ -46,6 +47,10 @@ public class UIManager : MonoBehaviour
 
     public void ToggleWheelActive(){
         currentWheel.GetComponent<WheelManager>().ToggleActive();
+    }
+
+    public void SetPlayerWheelActive(BattleManager bm, bool isActive){
+
     }
 
     public void ToggleWheelType(bool isPlayer){

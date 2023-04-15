@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.007523134, g: 0.0008608006, b: 0.020414513, a: 1}
+  m_IndirectSpecularColor: {r: 0.007523128, g: 0.0008607968, b: 0.020414464, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 294589004}
   m_Layer: 18
   m_Name: Spot
-  m_TagString: Untagged
+  m_TagString: Enemy_Spot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,12 +245,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294589003}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15, y: 7.604093, z: -23.90577}
+  m_LocalPosition: {x: -7.0068703, y: -30.834612, z: 35.60256}
   m_LocalScale: {x: 3, y: 0.4215, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1539548372}
-  m_RootOrder: 2
+  m_Father: {fileID: 879826491}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &396440924
 GameObject:
@@ -523,10 +523,16 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1904125616}
-  - {fileID: 1539548372}
+  - {fileID: 1069755105}
+  - {fileID: 2112730191}
+  - {fileID: 294589004}
+  - {fileID: 1237344539}
+  - {fileID: 1031703774}
+  - {fileID: 1391130458}
   - {fileID: 26483642}
   - {fileID: 613346908}
   - {fileID: 1928403677}
+  - {fileID: 1545171774}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -541,7 +547,7 @@ GameObject:
   - component: {fileID: 1031703774}
   m_Layer: 18
   m_Name: Spot
-  m_TagString: Untagged
+  m_TagString: Enemy_Spot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -554,12 +560,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031703773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25, y: 7.604093, z: -23.90577}
+  m_LocalPosition: {x: 2.9931297, y: -30.834612, z: 35.60256}
   m_LocalScale: {x: 3, y: 0.4215, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1539548372}
-  m_RootOrder: 4
+  m_Father: {fileID: 879826491}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069755104
 GameObject:
@@ -572,7 +578,7 @@ GameObject:
   - component: {fileID: 1069755105}
   m_Layer: 18
   m_Name: Companion2
-  m_TagString: Untagged
+  m_TagString: Companion_Spot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -585,12 +591,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069755104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.98, y: 7.604093, z: -23.90577}
+  m_LocalPosition: {x: -26.986868, y: -30.834612, z: 35.60256}
   m_LocalScale: {x: 3, y: 0.4215, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1539548372}
-  m_RootOrder: 0
+  m_Father: {fileID: 879826491}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1237344538
 GameObject:
@@ -603,7 +609,7 @@ GameObject:
   - component: {fileID: 1237344539}
   m_Layer: 18
   m_Name: Spot
-  m_TagString: Untagged
+  m_TagString: Enemy_Spot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -616,12 +622,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237344538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20, y: 7.604093, z: -23.90577}
+  m_LocalPosition: {x: -2.0068703, y: -30.834612, z: 35.60256}
   m_LocalScale: {x: 3, y: 0.4215, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1539548372}
-  m_RootOrder: 3
+  m_Father: {fileID: 879826491}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1391130457
 GameObject:
@@ -634,7 +640,7 @@ GameObject:
   - component: {fileID: 1391130458}
   m_Layer: 18
   m_Name: Spot
-  m_TagString: Untagged
+  m_TagString: Enemy_Spot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -647,14 +653,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1391130457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30, y: 7.604093, z: -23.90577}
+  m_LocalPosition: {x: 7.9931297, y: -30.834612, z: 35.60256}
   m_LocalScale: {x: 3, y: 0.4215, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1539548372}
-  m_RootOrder: 5
+  m_Father: {fileID: 879826491}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1539548371
+--- !u!1 &1545171773
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -662,35 +668,55 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1539548372}
+  - component: {fileID: 1545171774}
+  - component: {fileID: 1545171775}
   m_Layer: 18
-  m_Name: Spots
-  m_TagString: Untagged
+  m_Name: BM
+  m_TagString: BattleManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1539548372
+--- !u!4 &1545171774
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539548371}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.006868, y: -38.438705, z: 59.508327}
+  m_GameObject: {fileID: 1545171773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1069755105}
-  - {fileID: 2112730191}
-  - {fileID: 294589004}
-  - {fileID: 1237344539}
-  - {fileID: 1031703774}
-  - {fileID: 1391130458}
+  m_Children: []
   m_Father: {fileID: 879826491}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1545171775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545171773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e171ff3122a45042933ca8ee485fc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spots:
+    playerSpot: {fileID: 0}
+    companionSpot: {fileID: 0}
+    enemySpots: []
+  battle:
+    player: {fileID: 0}
+    companion: {fileID: 0}
+  localPlayer: {fileID: 0}
+  localCompanion: {fileID: 0}
+  localEnemies: []
+  currentAttacker: {fileID: 0}
+  currentVictim: {fileID: 0}
+  selectedEnemy: 0
 --- !u!1 &1904125614
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,7 +910,7 @@ GameObject:
   - component: {fileID: 2112730191}
   m_Layer: 18
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player_Spot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -897,10 +923,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112730190}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.046260834, y: 7.604093, z: -23.90577}
+  m_LocalPosition: {x: -22.05313, y: -30.834612, z: 35.60256}
   m_LocalScale: {x: 3, y: 0.4215, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1539548372}
-  m_RootOrder: 1
+  m_Father: {fileID: 879826491}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

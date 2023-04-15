@@ -14,7 +14,7 @@ AnimatorStateMachine:
     m_Position: {x: 250, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6484562083166677904}
-    m_Position: {x: 660, y: 30, z: 0}
+    m_Position: {x: 550, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5013705842020697363}
     m_Position: {x: 400, y: -40, z: 0}
@@ -73,7 +73,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2bf35c0c3b814764ab0b594f24c512cc, type: 2}
+  m_Motion: {fileID: 7400000, guid: b8c54cdbd84140547878c554d7529ce5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -110,7 +110,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Alien
+  m_Name: Fish
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Hit
@@ -188,7 +188,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16c72b526bc57dc428291579afdfcf62, type: 2}
+  m_Motion: {fileID: 7400000, guid: 57b10cb9c04c42b468bbc3f7099861f9, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

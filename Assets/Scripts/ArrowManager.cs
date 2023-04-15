@@ -6,7 +6,7 @@ public class ArrowManager : MonoBehaviour
 {
     BattleManager bm;
 
-    void Awake(){ if(bm == null){ bm = BattleManager.Get(); } }
+    void Start(){ bm = BattleManager.Get(); }
 
     // Update is called once per frame
     void Update()

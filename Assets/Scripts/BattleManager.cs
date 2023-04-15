@@ -3,18 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct Battle {
-    public GameObject       player, companion;
-    public GameObject[]     enemies;
-}
-
-[System.Serializable]
-public struct Spots {
-    public Transform        playerSpot, companionSpot;
-    public Transform[]      enemySpots;
-}
-
-[System.Serializable]
 public struct Turn {
     public int damage;
 
@@ -25,14 +13,16 @@ public struct Turn {
 
 public class BattleManager : MonoBehaviour
 {
-    [SerializeField]    Spots           spots;
-    [SerializeField]    Battle          battle;
 
     public GameObject          localPlayer, localCompanion;
     public List<GameObject>    localEnemies;
 
+    public Transform playerSpot, companionSpot;
+    public Transform[] enemySpots;
+
     GameManager gm;
     UIManager ui;
+    EnemyTypes[] enemies;
 
     int currentTurn = 0;
 
@@ -43,13 +33,8 @@ public class BattleManager : MonoBehaviour
         return GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
     }
 
-    void SetupBattle(Spots spots, Battle battle){
-        this.spots = spots;
-        this.battle = battle;
-    }
-
     public float Turns(){
-        if(battle.companion == null){
+        if(CharacterRegister.GLOBAL_COMPANION == null){
             return localEnemies.Count + 1;
         } else {
             return localEnemies.Count + 2;
@@ -57,44 +42,66 @@ public class BattleManager : MonoBehaviour
         
     }
 
-    // Start is called before the first frame update
-    void Awake()
-    {
-        gm = GameManager.Get();
-        ui = UIManager.Get();
+    public void Begin(EnemyTypes[] enemies){
+        List<GameObject> enemyList = new List<GameObject>();
+        Character[] _enemies = new Character[enemies.Length];
+
+        // Switch from EnemyTypes to Character
+        foreach(EnemyTypes enemy in enemies){
+            switch(enemy){
+                case EnemyTypes.Fish:
+                    enemyList.Add(CharacterRegister.FISH.battle);
+                    break;
+            }
+        }
 
         localEnemies = new List<GameObject>();
-        battle.player      =    CharacterRegister.GLOBAL_PLAYER.battle;
-        if(battle.companion != null) { battle.companion   =    CharacterRegister.GLOBAL_COMPANION.battle; }
-
-        localPlayer =    Instantiate(
-                                        battle.player,
-                                        spots.playerSpot.transform.position,
-                                        spots.playerSpot.transform.rotation
-                                    );
-
-        
-        if(battle.companion != null){
-            localCompanion = Instantiate(
-                                        battle.companion,
-                                        spots.companionSpot.transform.position,
-                                        spots.companionSpot.transform.rotation
-                                    );
-        }
-        
-
-        for(int i = 0; i < battle.enemies.Length; i++){
+        for(int i = 0; i < enemyList.Count; i++){
             GameObject enemy = Instantiate(
-                                            battle.enemies[i],
-                                            spots.enemySpots[i].position,
-                                            spots.enemySpots[i].rotation
+                                            enemyList[i],
+                                            enemySpots[(enemySpots.Length-1)-i].position,
+                                            enemySpots[(enemySpots.Length-1)-i].rotation
                                         );
             localEnemies.Add(enemy);
         }
 
+        localPlayer =    Instantiate(
+                                        CharacterRegister.GLOBAL_PLAYER.battle,
+                                        playerSpot.transform.position,
+                                        playerSpot.transform.rotation
+                                    );
+
+        
+        if(CharacterRegister.GLOBAL_COMPANION != null){
+            localCompanion = Instantiate(
+                                        CharacterRegister.GLOBAL_COMPANION.battle,
+                                        companionSpot.transform.position,
+                                        companionSpot.transform.rotation
+                                    );
+        }
         gm.SceneChanged();
 
         SwitchTurn();
+    }
+
+    public void Start(){
+        ui = UIManager.Get();
+        gm = GameManager.Get();
+
+        // initialize spots
+        playerSpot = GameObject.FindWithTag("Player_Spot").GetComponent<Transform>();
+        companionSpot = GameObject.FindWithTag("Companion_Spot").GetComponent<Transform>();
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy_Spot");
+        
+        // convert enemy GameObject[] to Transform[]
+        Transform[] _enemySpots = new Transform[enemyObjects.Length];
+        int i = 0;
+        foreach(GameObject spot in enemyObjects){
+            _enemySpots[i] = spot.transform;
+            i++;
+        }
+
+        enemySpots = _enemySpots;
     }
 
     // Call this whenever the player turn switches
@@ -108,7 +115,7 @@ public class BattleManager : MonoBehaviour
                 ui.playerWheel.gameObject.SetActive(true);
                 currentVictim = localEnemies[0];
             }
-            else if (currentTurn == 1 && battle.companion != null) // Companion
+            else if (currentTurn == 1 && CharacterRegister.GLOBAL_COMPANION != null) // Companion
             {
                 currentAttacker = localCompanion;
                 ui.ToggleWheelType(false);

@@ -54,7 +54,7 @@ public static class CharacterRegister {
                                                         2, 2
                                                     );
 
-    public static Character GLOBAL_COMPANION = DOG_COMPANION;
+    public static Character GLOBAL_COMPANION = null;
 
     // TODO: USE THESE FUNCTIONS TO SWAP PLAYERS AND CHARACTERS IN A UI MENU IN THE OVERWORLD OR IN BATTLE AS A TURN
 
@@ -71,6 +71,13 @@ public enum Music
     ATalkingDog,
     TechnoticEscapism,
     PenguinDojo
+}
+
+[System.Serializable]
+public enum EnemyTypes
+{
+    Alien,
+    Fish
 }
 
 [RequireComponent(typeof(DialogueUIElements))]
@@ -148,11 +155,7 @@ public class GameManager : MonoBehaviour
     static public GameManager Get(){
         return GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
-
-    public void InitializeBattle(string enemyType){
-        bm = gameObject.AddComponent<BattleManager>();
-
-    }
+    
     public void UpdateDirections(bool isLeft){
         CameraMovement cam = camera.GetComponent<CameraMovement>();
         cam.UpdateDirection(isLeft);
