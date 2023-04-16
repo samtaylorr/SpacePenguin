@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootEnergyWave : ActionModule
+public class ShootWave : ActionModule
 {
     GameManager gm;
     Transform attackPosition;
@@ -33,7 +33,7 @@ public class ShootEnergyWave : ActionModule
     {
         transform.position = attackPosition.position;
         transform.rotation = attackPosition.rotation;
-        // sr.sortingLayerName = "Attack";
+
 
         shoot = true;
     }

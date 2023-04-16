@@ -26,6 +26,9 @@ public class NPC : MonoBehaviour
     private bool showingText;
     private string textToShow;
 
+    [Header("Misceellanious")]
+    public bool rayCastMode = true;
+
     public GameObject prompt;
 
     public void Awake(){
@@ -51,6 +54,14 @@ public class NPC : MonoBehaviour
             player.setEnabled(false);
             (showPlayer ? dialogueUIElements.PlayerContainer : dialogueUIElements.NpcContainer).SetActive(true);
         }
+    }
+
+    public void DeActivate()
+    {
+        DialogueSystem.EndConversation();
+        isInConversation = false;
+        dialogueUIElements.PlayerContainer.SetActive(false);
+        dialogueUIElements.NpcContainer.SetActive(false);
     }
 
     // Shoots a spherical raycast to detect if the player is in the right distance
@@ -89,31 +100,33 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CollisionHit result = PlayerDetection();
+        if(rayCastMode){
+            CollisionHit result = PlayerDetection();
 
-        if ((result.left || result.right) && !isInConversation)
-        {
-            ShowPrompt();
-        }
-        else
-        {
-            HidePrompt();
-        }
+            if ((result.left || result.right) && !isInConversation)
+            {
+                ShowPrompt();
+            }
+            else
+            {
+                HidePrompt();
+            }
 
-        if (Input.GetKeyDown(KeyCode.E) && (result.left || result.right) && !isInConversation)
-        {
-            HidePrompt();
-            Activate();
-        }
+            if (Input.GetKeyDown(KeyCode.E) && (result.left || result.right) && !isInConversation)
+            {
+                HidePrompt();
+                Activate();
+            }
 
-        if (questMarker && !questMarkerPrefab.activeInHierarchy)
-        {
-            questMarkerPrefab.SetActive(true);
-        }
+            if (questMarker && !questMarkerPrefab.activeInHierarchy)
+            {
+                questMarkerPrefab.SetActive(true);
+            }
 
-        if (!questMarker && questMarkerPrefab.activeInHierarchy)
-        {
-            questMarkerPrefab.SetActive(false);
+            if (!questMarker && questMarkerPrefab.activeInHierarchy)
+            {
+                questMarkerPrefab.SetActive(false);
+            }
         }
 
         if (!isInConversation || isPlayerChoosing) return;

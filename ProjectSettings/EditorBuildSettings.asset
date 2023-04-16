@@ -18,6 +18,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SnowArea02.unity
     guid: 7aa1d6dc4a836d94ca26420bf6580256
   - enabled: 1
+    path: Assets/Scenes/Cutscenes/BeamCutscene.unity
+    guid: c7dd555f3be5fba4d8cb4fda245dbc7c
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/PrisonCell.unity
+    guid: 127d9e45ea548fa45bc931876f2afb80
+  - enabled: 1
+    path: Assets/Scenes/AlienInteriorWing.unity
+    guid: d2cfd2e3ec064d341982fa8f6a32d9a7
+  - enabled: 1
     path: Assets/Scenes/MatrixArena.unity
     guid: f4d318573ee0b3843a216ce4d547a5c0
   m_configObjects:

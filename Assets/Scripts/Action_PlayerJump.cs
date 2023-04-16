@@ -23,9 +23,10 @@ public class Action_PlayerJump : ActionModule
                                                                         bm.currentVictim.transform.position.z);
 
         positions = GetComponent<Bezier>().CalculateCurvePoints(100, bm.currentAttacker.transform.position, victimPos, 25);
-        StartCoroutine(Jump());
         animHandler = bm.currentAttacker.GetComponent<MovementAbstract>().animHandler;
         animHandler.SetJump();
+        StartCoroutine(Jump());
+        
     }
 
     IEnumerator Timing(Transform img){

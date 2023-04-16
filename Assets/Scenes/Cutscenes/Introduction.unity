@@ -1790,6 +1790,7 @@ MonoBehaviour:
   movementBounds:
     min: 0.1
     max: 36.99
+    trigger: 0
   collisionDistance: 5
   DialogueSystem: {fileID: 1159397048}
   prompt: {fileID: 292434579}
@@ -3122,6 +3123,7 @@ MonoBehaviour:
   movementBounds:
     min: 0.1
     max: 36.99
+    trigger: 0
   collisionDistance: 5
   DialogueSystem: {fileID: 5247894984118535183}
   prompt: {fileID: 5707058471750944911}
@@ -3369,7 +3371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6853030084022151335, guid: 3cfeaeb12727bc543bea1c46f12e67f4, type: 3}
       propertyPath: m_Name
-      value: INCLUDE IN SCENES
+      value: TEST OBJECT
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -9,8 +9,8 @@ public class DeveloperMode : MonoBehaviour
     void Update()
     {
         if(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.F)){
-            GameManager.Get().SwitchMusic(Music.Snow);
-            SceneManager.LoadScene("Scenes/SnowArea02");
+            GameManager.Get().SwitchMusic(Music.ATalkingDog);
+            SceneManager.LoadScene("Scenes/Cutscenes/PrisonCell");
             GameManager.Get().SceneChanged();
         }
     }

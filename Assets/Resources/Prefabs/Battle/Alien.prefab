@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6499498520031185987}
   - component: {fileID: 4183199859305848081}
   - component: {fileID: 5246825230037164246}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Eyelid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 8502249139589214080}
   - component: {fileID: 7855041919091353306}
   - component: {fileID: 1560201350309514222}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5094245315500823372}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: bone_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4280837419283445569}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: bone_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 3556009945092022632}
   - component: {fileID: 4597914220579006670}
   - component: {fileID: 9030109277174243229}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Alien
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 5063907424169049328}
   - component: {fileID: 5720419218266573224}
   - component: {fileID: 8303295384475132252}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Left Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 5457346005549028620}
   - component: {fileID: 6968547645982192382}
   - component: {fileID: 483417373077052990}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Right Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8728176885765914146}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: bone_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 79292329088671196}
   - component: {fileID: 7056077310169342936}
   - component: {fileID: 3706108842542342838}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 2256434245597167464}
   - component: {fileID: 6402551641613873020}
   - component: {fileID: 7998592543292126341}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Belt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,7 +836,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 754635528265848999}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: bone_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +869,7 @@ GameObject:
   - component: {fileID: 83803036174133005}
   - component: {fileID: 3269044047674466512}
   - component: {fileID: 3176373975535682872}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 127241744331959141}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: bone_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,7 +1007,7 @@ GameObject:
   - component: {fileID: 5903221216437219055}
   - component: {fileID: 7948930878931494052}
   - component: {fileID: 7704546133566016471}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1111,7 +1111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1080504612825506158}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: bone_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

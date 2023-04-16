@@ -68,4 +68,8 @@ public class UIManager : MonoBehaviour
         }
         actionMenu.gameObject.SetActive(true);
     }
+
+    public void refreshBM(BattleManager bm){
+        selectionArrow.SetBM(bm);
+    }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct Turn {
@@ -20,17 +21,26 @@ public class BattleManager : MonoBehaviour
     public Transform playerSpot, companionSpot;
     public Transform[] enemySpots;
 
+    private static BattleManager instance;
+
     GameManager gm;
     UIManager ui;
     EnemyTypes[] enemies;
 
     int currentTurn = 0;
+    bool refreshEnemies = true;
 
     public GameObject currentAttacker, currentVictim;
     public int selectedEnemy;
+    Stack<GameObject> enemiesToGo;
 
     public static BattleManager Get(){
-        return GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
+        return BattleManager.instance;
+    }
+
+    public static void Set(BattleManager instance){
+        if(BattleManager.instance != null){ Destroy(BattleManager.instance); }
+        BattleManager.instance = instance;
     }
 
     public float Turns(){
@@ -51,6 +61,9 @@ public class BattleManager : MonoBehaviour
             switch(enemy){
                 case EnemyTypes.Fish:
                     enemyList.Add(CharacterRegister.FISH.battle);
+                    break;
+                case EnemyTypes.Alien:
+                    enemyList.Add(CharacterRegister.ALIEN.battle);
                     break;
             }
         }
@@ -84,9 +97,12 @@ public class BattleManager : MonoBehaviour
         SwitchTurn();
     }
 
+    public void Awake(){ BattleManager.Set(this); }
+
     public void Start(){
         ui = UIManager.Get();
         gm = GameManager.Get();
+        ui.refreshBM(this);
 
         // initialize spots
         playerSpot = GameObject.FindWithTag("Player_Spot").GetComponent<Transform>();
@@ -110,6 +126,7 @@ public class BattleManager : MonoBehaviour
         if(localEnemies.Count > 0){
                 if (currentTurn == 0) // Player
             {
+                refreshEnemies = true;
                 currentAttacker = localPlayer;
                 ui.ToggleWheelType(true);
                 ui.playerWheel.gameObject.SetActive(true);
@@ -117,6 +134,7 @@ public class BattleManager : MonoBehaviour
             }
             else if (currentTurn == 1 && CharacterRegister.GLOBAL_COMPANION != null) // Companion
             {
+                Debug.Log("calling companion");
                 currentAttacker = localCompanion;
                 ui.ToggleWheelType(false);
                 ui.companionWheel.gameObject.SetActive(true);
@@ -126,14 +144,22 @@ public class BattleManager : MonoBehaviour
             } else {
                 ui.playerWheel.gameObject.SetActive(false);
                 ui.companionWheel.gameObject.SetActive(false);
-                int index = currentTurn - 2;
-                if (index > -1 && index < localEnemies.Count){
-                    currentAttacker = localEnemies[index];
-                    currentAttacker.GetComponent<Enemy>().AI_TakeTurn(gm, this);
+
+                if(refreshEnemies){
+                    refreshEnemies = false;
+                    enemiesToGo = new Stack<GameObject>();
+                    foreach(GameObject enemy in localEnemies){ enemiesToGo.Push(enemy); }
+                }
+
+                if(enemiesToGo.Count > 0){
+                    Enemy enemy = enemiesToGo.Pop().GetComponent<Enemy>();
+                    enemy.AI_TakeTurn(gm, this);
+                } else {
+                    currentTurn = 0;
                 }
             }
         } else {
-            Debug.Log("Battle over");
+            gm.UnloadScene(this.gameObject.scene.name);
         }
     }
 
@@ -154,6 +180,7 @@ public class BattleManager : MonoBehaviour
         if(enemy.hp <= 0){
             localEnemies.Remove(enemy.gameObject);
             enemy.Kill();
+            localEnemies.TrimExcess();
         }
 
         EndTurn();

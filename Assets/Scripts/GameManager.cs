@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character {
     public GameObject battle;
@@ -54,6 +56,12 @@ public static class CharacterRegister {
                                                         2, 2
                                                     );
 
+    public static Character ALIEN = new Character          (
+                                                        Resources.Load("Prefabs/Battle/Alien") as GameObject,
+                                                        Resources.Load("Sprites/Fish.psd") as Sprite,
+                                                        2, 2
+                                                    );
+
     public static Character GLOBAL_COMPANION = null;
 
     // TODO: USE THESE FUNCTIONS TO SWAP PLAYERS AND CHARACTERS IN A UI MENU IN THE OVERWORLD OR IN BATTLE AS A TURN
@@ -70,7 +78,8 @@ public enum Music
     SnowPlucks,
     ATalkingDog,
     TechnoticEscapism,
-    PenguinDojo
+    PenguinDojo,
+    Abduction
 }
 
 [System.Serializable]
@@ -87,8 +96,20 @@ public class GameManager : MonoBehaviour
     public GameObject player, companion, camera;
     public TMPro.TMP_Text prompt;
     AudioSource audioSource;
+    public Music currentSong;
     BattleManager bm;
     [SerializeField] UIManager ui;
+
+    Stack<GameObject> enemyCache;
+
+    public void SceneChanged(Vector3 playerPosition){
+        player.transform.position = playerPosition;
+        return;
+    }
+
+    public UIManager UIManager(){
+        return ui;
+    }
 
     public void SceneChanged(){
         player.transform.position = new Vector3(0,0,0);
@@ -104,38 +125,73 @@ public class GameManager : MonoBehaviour
 
     public void SwitchMusic(Music music)
     {
-        switch (music)
-        {
-            case Music.MenuMusic:
-                audioSource.clip = (Resources.Load("Music/00 - Space Penguin") as AudioClip);
-                break;
-            case Music.Snow:
-                audioSource.clip = (Resources.Load("Music/Area 01 - Snow") as AudioClip);
-                break;
-            case Music.SnowPlucks:
-                audioSource.clip = (Resources.Load("Music/Area 01b - Snow Plucks") as AudioClip);
-                break;
-            case Music.PenguinDojo:
-                audioSource.clip = (Resources.Load("Music/Battle 02 - Penguin Dojo") as AudioClip);
-                break;
-            case Music.ATalkingDog:
-                audioSource.clip = (Resources.Load("Music/Area 02 - A Talking Dog") as AudioClip);
-                break;
-            case Music.TechnoticEscapism:
-                audioSource.clip = (Resources.Load("Music/Battle 01 - Technotic Escapism") as AudioClip);
-                break;
+        if(currentSong != music){
+            switch (music)
+            {
+                case Music.MenuMusic:
+                    audioSource.clip = (Resources.Load("Music/00 - Space Penguin") as AudioClip);
+                    break;
+                case Music.Snow:
+                    audioSource.clip = (Resources.Load("Music/Area 01 - Snow") as AudioClip);
+                    break;
+                case Music.SnowPlucks:
+                    audioSource.clip = (Resources.Load("Music/Area 01b - Snow Plucks") as AudioClip);
+                    break;
+                case Music.PenguinDojo:
+                    audioSource.clip = (Resources.Load("Music/Battle 02 - Penguin Dojo") as AudioClip);
+                    break;
+                case Music.ATalkingDog:
+                    audioSource.clip = (Resources.Load("Music/Area 02 - A Talking Dog") as AudioClip);
+                    break;
+                case Music.TechnoticEscapism:
+                    audioSource.clip = (Resources.Load("Music/Battle 01 - Technotic Escapism") as AudioClip);
+                    break;
+                case Music.Abduction:
+                    audioSource.clip = (Resources.Load("Music/Area 01c - The Abduction Song") as AudioClip);
+                    break;
+            }
+            audioSource.Play();
+            currentSong = music;
         }
-
-        audioSource.Play();
     }
 
-    public void PauseEntities(){
+    public void PauseEntities(GameObject enemyToDestroy){
         player.GetComponent<PlayerMovement>().setEnabled(false);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemyCache = new Stack<GameObject>();
 
         foreach (GameObject enemy in enemies)
         {
-            enemy.SetActive(false);
+            if(enemy != enemyToDestroy){
+                enemyCache.Push(enemy);
+                enemy.SetActive(false);
+            }
+        }
+    }
+
+    public IEnumerator LoadBattle(string lvl, EnemyTypes[] enemies, Vector3 playerState, GameObject enemyToDestroy)
+    {
+        // Start loading the scene
+        AsyncOperation asyncLoadLevel = SceneManager.LoadSceneAsync(lvl, LoadSceneMode.Additive);
+        SwitchMusic(Music.TechnoticEscapism);
+        // Wait until the level finish loading
+        while (!asyncLoadLevel.isDone)
+            yield return null;
+        // Wait a frame so every Awake and Start method is called
+        yield return new WaitForEndOfFrame();
+        PauseEntities(enemyToDestroy);
+        player.transform.position = playerState;
+        Destroy(enemyToDestroy);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(lvl));
+        BattleManager.Get().Begin(enemies);
+    }
+
+    public void ResumeEntities(){
+        player.GetComponent<PlayerMovement>().setEnabled(true);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        while(enemyCache.Count > 0){
+            enemyCache.Pop().SetActive(true);
         }
     }
 
@@ -160,5 +216,22 @@ public class GameManager : MonoBehaviour
         CameraMovement cam = camera.GetComponent<CameraMovement>();
         cam.UpdateDirection(isLeft);
         if(companion != null){ companion.GetComponent<CompanionMovement>().UpdateDirection(isLeft); }
+    }
+
+    public void UnloadScene(string lvl)
+    {
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(lvl));
+        ResumeEntities();
+        SwitchMusic(currentSong);
+        StartCoroutine(Enum_UnloadScene(lvl));
+    }
+
+    public IEnumerator Enum_UnloadScene(string lvl)
+    {
+        // Start loading the scene
+        AsyncOperation asyncUnloadLevel = SceneManager.UnloadSceneAsync(lvl);
+        // Wait until the level finish loading
+        while (!asyncUnloadLevel.isDone)
+            yield return null;
     }
 }

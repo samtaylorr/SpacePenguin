@@ -165,7 +165,7 @@
                 },
                 "Expanded": true
             },
-            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"This is where the rest of your life begins...\\\",\\\"PortGuidA\\\":\\\"30ae3c9c-6e53-4d59-9921-4b3bb8155f16\\\",\\\"PortGuidB\\\":\\\"936edf49-5d6e-42dd-b61c-d4395735dd54\\\",\\\"PortGuidC\\\":\\\"8ef69f30-37cc-4895-a398-641b8de70ac9\\\"}]\"}",
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"\\\",\\\"PortGuidA\\\":\\\"30ae3c9c-6e53-4d59-9921-4b3bb8155f16\\\",\\\"PortGuidB\\\":\\\"936edf49-5d6e-42dd-b61c-d4395735dd54\\\",\\\"PortGuidC\\\":\\\"8ef69f30-37cc-4895-a398-641b8de70ac9\\\"}]\"}",
             "PortData": [
                 "f6a07839-1623-4043-ae52-22d3187f6cf8",
                 "6f47b7f6-dccc-4d6c-984a-c03002eddb14",

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4639139957704094616}
   - component: {fileID: 4971243449217731014}
   - component: {fileID: 3297276177179367648}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: EnergyWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4971243449217731014
 MonoBehaviour:
@@ -42,12 +42,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8969515784732918807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06b2e9431de90334dbffbe41a1ec0f86, type: 3}
+  m_Script: {fileID: 11500000, guid: 70f90cd90f6930b469e11bc08b1990a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attacker: {fileID: 0}
   victim: {fileID: 0}
   bm: {fileID: 0}
+  damage: 1
 --- !u!212 &3297276177179367648
 SpriteRenderer:
   m_ObjectHideFlags: 0

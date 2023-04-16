@@ -18,10 +18,12 @@ public class CutsceneDialogue : MonoBehaviour
     private string textToShow;
     public GameObject prompt;
 
+    public bool playOnAwake = true;
+
     public void Awake()
     {
         dialogueUIElements = GameManager.Get().GetDialogueUIElements();
-        Activate();
+        if(playOnAwake) { Activate(); }
     }
 
     public void Activate()

@@ -10,8 +10,8 @@ public class Enemy_Alien : Enemy
     {
         StartCoroutine(SimulateThinking(() =>
         {
-            // Generate Random for
-            int index = Random.Range(0, 2);
+            int index = 0;
+            if(CharacterRegister.GLOBAL_COMPANION != null) { index = Random.Range(0, 2); }
             GameObject victim;
             if (index == 0)
             {
@@ -25,7 +25,7 @@ public class Enemy_Alien : Enemy
             }
             GameObject actionObject = ActionRegister.ENEMY_SHOOT_ENERGY_WAVE.actionModule;
             GameObject instance = Instantiate(actionObject, new Vector3(actionObject.transform.position.x, 3, actionObject.transform.position.z), actionObject.transform.rotation);
-            ShootEnergyWave shootEnergyWave = instance.GetComponent<ShootEnergyWave>();
+            ShootWave shootEnergyWave = instance.GetComponent<ShootWave>();
             shootEnergyWave.setAttackPosition(transform);
             shootEnergyWave.setVictim(victim, victimCharacter);
             shootEnergyWave.Shoot();

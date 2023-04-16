@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Fish : Enemy
@@ -10,28 +8,22 @@ public class Enemy_Fish : Enemy
     {
         StartCoroutine(SimulateThinking(() =>
         {
-            // Generate Random for
-            int index = Random.Range(0, 2);
+            int index = 0;
+            if(CharacterRegister.GLOBAL_COMPANION != null) { index = Random.Range(0, 2); }
             GameObject victim;
-            if(CharacterRegister.GLOBAL_COMPANION == null){
-                    victim = bm.localPlayer;
-                    victimCharacter = CharacterRegister.GLOBAL_PLAYER;
-            } else {
-                if (index == 0)
-                {
-                    victim = bm.localPlayer;
-                    victimCharacter = CharacterRegister.GLOBAL_PLAYER;
-                }
-                else
-                {
-                    victim = bm.localCompanion;
-                    victimCharacter = CharacterRegister.GLOBAL_COMPANION;
-                }
+            if (index == 0)
+            {
+                victim = bm.localPlayer;
+                victimCharacter = CharacterRegister.GLOBAL_PLAYER;
             }
-            
+            else
+            {
+                victim = bm.localCompanion;
+                victimCharacter = CharacterRegister.GLOBAL_COMPANION;
+            }
             GameObject actionObject = ActionRegister.ENEMY_SHOOT_ENERGY_WAVE.actionModule;
             GameObject instance = Instantiate(actionObject, new Vector3(actionObject.transform.position.x, 3, actionObject.transform.position.z), actionObject.transform.rotation);
-            ShootEnergyWave shootEnergyWave = instance.GetComponent<ShootEnergyWave>();
+            ShootWave shootEnergyWave = instance.GetComponent<ShootWave>();
             shootEnergyWave.setAttackPosition(transform);
             shootEnergyWave.setVictim(victim, victimCharacter);
             shootEnergyWave.Shoot();
