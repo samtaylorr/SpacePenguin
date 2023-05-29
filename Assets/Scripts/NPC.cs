@@ -15,6 +15,8 @@ public class NPC : MonoBehaviour
     DialogueUIElements dialogueUIElements;
     PlayerMovement player;
 
+    private bool inDistance;
+
     private bool metBefore = false;
     private bool isAngry = false;
 
@@ -31,8 +33,9 @@ public class NPC : MonoBehaviour
 
     public GameObject prompt;
 
-    public void Awake(){
+    public void Start(){
         dialogueUIElements = GameManager.Get().GetDialogueUIElements();
+        player = GameManager.Get().GetPlayer().GetComponent<PlayerMovement>();
     }
     public void ShowPrompt()
     {
@@ -46,7 +49,6 @@ public class NPC : MonoBehaviour
 
     public void Activate()
     {
-        player = GameManager.Get().GetPlayer().GetComponent<PlayerMovement>();
         if (!isInConversation)
         {
             DialogueSystem.ResetConversation();
@@ -64,46 +66,14 @@ public class NPC : MonoBehaviour
         dialogueUIElements.NpcContainer.SetActive(false);
     }
 
-    // Shoots a spherical raycast to detect if the player is in the right distance
-    // to activate dialogue
-    public CollisionHit PlayerDetection()
-    {
-        CollisionHit result = new CollisionHit();
-
-        if (transform.position.z >= movementBounds.max) { transform.position = new Vector3(transform.position.x, transform.position.y, movementBounds.max); }
-        else if (transform.position.z <= movementBounds.min) { transform.position = new Vector3(transform.position.x, transform.position.y, movementBounds.min); }
-
-        int layerMask = 1 << 7;
-
-        RaycastHit left, right;
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z);
-
-
-        Debug.DrawRay(pos, transform.TransformDirection(-Vector3.right) * collisionDistance, Color.red);
-        Debug.DrawRay(pos, transform.TransformDirection(Vector3.right) * collisionDistance, Color.green);
-
-        if (Physics.Raycast(pos, transform.TransformDirection(-Vector3.right), out left, collisionDistance, layerMask))
-        {
-            result.left = true;
-        }
-        else { result.left = false; }
-
-        if (Physics.Raycast(pos, transform.TransformDirection(Vector3.right), out right, collisionDistance, layerMask))
-        {
-            result.right = true;
-        }
-        else { result.right = false; }
-
-        return result;
-    }
-
     // Update is called once per frame
     void Update()
     {
         if(rayCastMode){
-            CollisionHit result = PlayerDetection();
+            if(Vector3.Distance(this.transform.position, player.transform.position) < 7){ inDistance = true; }
+            else { inDistance = false; }
 
-            if ((result.left || result.right) && !isInConversation)
+            if (inDistance && !isInConversation)
             {
                 ShowPrompt();
             }
@@ -112,7 +82,7 @@ public class NPC : MonoBehaviour
                 HidePrompt();
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && (result.left || result.right) && !isInConversation)
+            if (Input.GetKeyDown(KeyCode.E) && inDistance && !isInConversation)
             {
                 HidePrompt();
                 Activate();

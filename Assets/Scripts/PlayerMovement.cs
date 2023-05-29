@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(EdgeDetection))]
 public class PlayerMovement : MovementAbstract
 {
 
@@ -45,11 +44,12 @@ public class PlayerMovement : MovementAbstract
                 isGrounded = false;
             }
 
+            transform.Translate(horizontal, 0, vertical);
+
             CollisionHit result = collisions.DetectCollision();
             if (horizontal <= 0 && result.left) { horizontal = 0; }
             if (horizontal >= 0 && result.right) { horizontal = 0; }
-
-            transform.Translate(horizontal, 0, vertical);
+            if (horizontal >= 0 && result.right) { horizontal = 0; }
 
             if (horizontal < 0 || vertical < 0)
             {

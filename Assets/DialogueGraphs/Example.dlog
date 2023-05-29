@@ -52,7 +52,7 @@
                 },
                 "Expanded": true
             },
-            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"The tribe is worried about the noise that came from over the west. I'd like you to go investigate it, it's most likely just a bit of turbulance... \\\",\\\"PortGuidA\\\":\\\"c3805298-faa3-439d-9ee7-7111c8f3dd68\\\",\\\"PortGuidB\\\":\\\"19b8974a-0258-42d2-ad33-ba26e5fe961b\\\",\\\"PortGuidC\\\":\\\"d0a01741-3927-4dda-85dd-990d1e7a8fcd\\\"}]\"}",
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"The tribe is worried about the noise that came from over the East. I'd like you to go investigate it, it's most likely just a bit of turbulance... \\\",\\\"PortGuidA\\\":\\\"c3805298-faa3-439d-9ee7-7111c8f3dd68\\\",\\\"PortGuidB\\\":\\\"19b8974a-0258-42d2-ad33-ba26e5fe961b\\\",\\\"PortGuidC\\\":\\\"d0a01741-3927-4dda-85dd-990d1e7a8fcd\\\"}]\"}",
             "PortData": [
                 "c229642b-a054-46c2-ae5d-180062608848",
                 "11fbacd5-f9f7-4490-9645-50703dc9943d",

@@ -4,11 +4,12 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public enum Scenes
 {
-    [SerializeField] Area1Cutscene,
-    [SerializeField] Area1,
-    [SerializeField] Area2,
-    [SerializeField] AbductionCutscene,
-    [SerializeField] PrisonCellSpaceship
+    Area1Cutscene,
+    Area1,
+    Area2,
+    AbductionCutscene,
+    PrisonCellSpaceship,
+    DemoEnd
 }
 
 public class SceneLoader : MonoBehaviour
@@ -50,6 +51,11 @@ public class SceneLoader : MonoBehaviour
                 SceneManager.LoadScene("Scenes/Cutscenes/PrisonCell");
                 GameManager.Get().SceneChanged(position);
                 break;
+            case Scenes.DemoEnd:
+                GameManager.Get().SwitchMusic(Music.PenguinDojo);
+                SceneManager.LoadScene("Scenes/DemoEnd");
+                GameManager.Get().SceneChanged(position);
+                break;
         }
     }
 
@@ -59,4 +65,5 @@ public class SceneLoader : MonoBehaviour
     public void Area2() => LoadScene(Scenes.Area2);
     public void AbductionCutscene() => LoadScene(Scenes.AbductionCutscene);
     public void PrisonCellSpaceship() => LoadScene(Scenes.PrisonCellSpaceship);
+    public void DemoEnd() => LoadScene(Scenes.DemoEnd);
 }

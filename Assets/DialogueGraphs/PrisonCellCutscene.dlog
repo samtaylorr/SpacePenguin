@@ -119,14 +119,14 @@
             "DrawState": {
                 "Position": {
                     "serializedVersion": "2",
-                    "x": 372.358154296875,
-                    "y": -3765.291015625,
-                    "width": 145.0,
-                    "height": 95.99996948242188
+                    "x": 372.0,
+                    "y": -3764.0,
+                    "width": 436.0,
+                    "height": 185.0
                 },
                 "Expanded": true
             },
-            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Damn, that sucks bro, sorry to hear that\\\",\\\"PortGuidA\\\":\\\"f8c822d3-f488-465c-b20e-3dacba8f6eea\\\",\\\"PortGuidB\\\":\\\"83c6f8b9-e526-4b89-ba13-c77b90d60a6a\\\",\\\"PortGuidC\\\":\\\"a7f4b298-e36f-43bb-bd15-711937076fb9\\\"}]\"}",
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Damn, that sucks, sorry to hear that\\\",\\\"PortGuidA\\\":\\\"f8c822d3-f488-465c-b20e-3dacba8f6eea\\\",\\\"PortGuidB\\\":\\\"83c6f8b9-e526-4b89-ba13-c77b90d60a6a\\\",\\\"PortGuidC\\\":\\\"a7f4b298-e36f-43bb-bd15-711937076fb9\\\"}]\"}",
             "PortData": [
                 "885445c0-f544-4665-b175-7742433d97e0",
                 "0f8d7da8-1cd3-4ff3-9e08-501906b11524",
@@ -190,7 +190,7 @@
                 },
                 "Expanded": true
             },
-            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Ah, Earth. Guess we're from the same home then brother.  We must be from different parts of town or something\\\",\\\"PortGuidA\\\":\\\"670e88ab-b88c-43c1-ac35-27df8d1f6ab5\\\",\\\"PortGuidB\\\":\\\"0fa460bb-0976-401a-8f28-cbc0dd808d95\\\",\\\"PortGuidC\\\":\\\"623af9a0-95f7-47d2-a648-9f1e69819cac\\\"}]\"}",
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Ah, Earth. Guess we're from the same home then bird.  We must be from different parts of town or something\\\",\\\"PortGuidA\\\":\\\"670e88ab-b88c-43c1-ac35-27df8d1f6ab5\\\",\\\"PortGuidB\\\":\\\"0fa460bb-0976-401a-8f28-cbc0dd808d95\\\",\\\"PortGuidC\\\":\\\"623af9a0-95f7-47d2-a648-9f1e69819cac\\\"}]\"}",
             "PortData": [
                 "897f9d92-f5e0-4a0d-8f77-6ad6e0e812b6",
                 "65c927bc-465e-4173-8a32-37832269948e",
@@ -212,7 +212,7 @@
                 },
                 "Expanded": true
             },
-            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"Okay listen, I don't wanna stay locked up here and I'm already started to freak out, where's the exit?\\\",\\\"PortGuidA\\\":\\\"6cd08d09-e0de-4b79-bfc5-f8e617059e12\\\",\\\"PortGuidB\\\":\\\"79985c77-66d3-4f8e-90a2-4922f538eb6e\\\"},{\\\"Line\\\":\\\"Do i have to talk to you? Can you shut up for a second.\\\",\\\"PortGuidA\\\":\\\"c0a98244-7df7-4e7b-8ad9-efcc2c506285\\\",\\\"PortGuidB\\\":\\\"a78c7bcd-7613-4542-9afc-a60d07c0097f\\\"}]\"}",
+            "NodeData": "{\"lines\":\"[{\\\"Line\\\":\\\"I don't wanna stay locked up here and I'm already started to freak out, where's the exit?\\\",\\\"PortGuidA\\\":\\\"6cd08d09-e0de-4b79-bfc5-f8e617059e12\\\",\\\"PortGuidB\\\":\\\"79985c77-66d3-4f8e-90a2-4922f538eb6e\\\"},{\\\"Line\\\":\\\"Do i have to talk to you? Can you shut up for a second.\\\",\\\"PortGuidA\\\":\\\"c0a98244-7df7-4e7b-8ad9-efcc2c506285\\\",\\\"PortGuidB\\\":\\\"a78c7bcd-7613-4542-9afc-a60d07c0097f\\\"}]\"}",
             "PortData": [
                 "8a497473-b533-4389-92fe-f382291e1f79",
                 "6cd08d09-e0de-4b79-bfc5-f8e617059e12",

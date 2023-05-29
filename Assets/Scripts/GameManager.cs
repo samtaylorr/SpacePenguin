@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
     public Music currentSong;
     BattleManager bm;
     [SerializeField] UIManager ui;
+    private static GameManager gm;
 
     Stack<GameObject> enemyCache;
 
@@ -118,9 +119,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject GetPlayer(){
         return player;
-    }
-
-    public void LoadPlayer(){
     }
 
     public void SwitchMusic(Music music)
@@ -173,7 +171,6 @@ public class GameManager : MonoBehaviour
     {
         // Start loading the scene
         AsyncOperation asyncLoadLevel = SceneManager.LoadSceneAsync(lvl, LoadSceneMode.Additive);
-        SwitchMusic(Music.TechnoticEscapism);
         // Wait until the level finish loading
         while (!asyncLoadLevel.isDone)
             yield return null;
@@ -204,12 +201,13 @@ public class GameManager : MonoBehaviour
     }
 
     public void Awake(){
+        gm = this;
         audioSource = GetComponent<AudioSource>();
         SceneChanged();
     }
 
     static public GameManager Get(){
-        return GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        return gm;
     }
     
     public void UpdateDirections(bool isLeft){
@@ -222,7 +220,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(lvl));
         ResumeEntities();
-        SwitchMusic(currentSong);
         StartCoroutine(Enum_UnloadScene(lvl));
     }
 

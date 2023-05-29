@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
     Vector3 offset, currentOffset;
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         gm = GameManager.Get();
     }

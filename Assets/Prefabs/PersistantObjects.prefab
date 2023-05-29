@@ -3239,7 +3239,7 @@ Transform:
   - {fileID: 1295827108435409118}
   - {fileID: 4689747517174131057}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2127005147
 MonoBehaviour:
@@ -3306,6 +3306,7 @@ MonoBehaviour:
   companion: {fileID: 0}
   camera: {fileID: 4689747517174131054}
   prompt: {fileID: 0}
+  currentSong: 0
   ui: {fileID: 2057381085}
 --- !u!114 &9179369866537755520
 MonoBehaviour:
@@ -3829,6 +3830,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 658000378922755749, guid: b1d48c942b510b74aa5baea47ae8a7a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 658000379942632420, guid: b1d48c942b510b74aa5baea47ae8a7a6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2398211795726974503, guid: b1d48c942b510b74aa5baea47ae8a7a6, type: 3}
